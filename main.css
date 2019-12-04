@@ -1,12 +1,15 @@
-.head {
+.navigate {
+  position: fixed;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 80px;
   padding-left: 120px;
+  border-bottom: 1px solid #d5d5d5;
+  padding-bottom: 10px;
 }
-.head_create {
+.navigate_create {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,11 +23,11 @@
   margin-right: 50px;
   font-size: 18px;
 }
-.head_create:hover {
+.navigate_create:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 15px 15px rgba(0, 0, 0, 0.22);
   transition: 1s;
 }
-.head_today {
+.navigate_today {
   border: 1px solid grey;
   border-radius: 3px;
   height: 40px;
@@ -34,16 +37,16 @@
   margin-right: 50px;
   font-weight: 700;
 }
-.head_today:hover {
+.navigate_today:hover {
   background-color: #d5d5d5;
   transition: 1s;
 }
 
-.head__arows {
+.navigate__arows {
   display: flex;
   margin-right: 50px;
 }
-.head__arows_right {
+.navigate__arows_right {
   background-image: url("https://img.icons8.com/material-sharp/24/000000/forward.png");
   width: 35px;
   height: 35px;
@@ -51,11 +54,11 @@
   background-position: center;
   background-size: auto;
 }
-.head__arows_right:hover {
+.navigate__arows_right:hover {
   background-color: #D3D3D3;
   transition: 1s;
 }
-.head__arows_left {
+.navigate__arows_left {
   background-image: url("https://img.icons8.com/material-sharp/24/000000/forward.png");
   width: 35px;
   height: 35px;
@@ -64,12 +67,12 @@
   background-position: center;
   background-size: auto;
 }
-.head__arows_left:hover {
+.navigate__arows_left:hover {
   background-color: #D3D3D3;
   transition: 1s;
 }
 
-.head__MounthAndYear {
+.navigate__MonthAndYear {
   font-size: 24px;
   font-weight: 500;
 }
@@ -78,6 +81,52 @@
   width: 35px;
   height: 35px;
   margin-right: 10px;
+}
+
+.week {
+  position: fixed;
+  top: 90px;
+  display: flex;
+  padding-left: 50px;
+  border-bottom: 1px solid #d5d5d5;
+  width: 100vw;
+}
+
+.day {
+  position: relative;
+  flex-grow: 1;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.day_nameDay {
+  font-size: 20px;
+  opacity: 0.5;
+}
+.day_numberDay {
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  margin-top: 15px;
+  font-size: 25px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+}
+
+.LittleBorder {
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+  border-left: 2px solid #d5d5d5;
+}
+
+.today {
+  background-color: #0000FF;
+  color: white;
 }
 
 body {
