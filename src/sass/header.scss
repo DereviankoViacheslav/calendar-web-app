@@ -1,10 +1,8 @@
 
 .navigate{
-    position: fixed;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
     height: 80px;
     padding-left: 120px;
     border-bottom: 1px solid #d5d5d5;
@@ -87,32 +85,29 @@
 }
 
 .week{
-    position: fixed;
-    top: 90px;
     display: flex;
-    padding-left: 50px;
+    padding: 0 15px 0 60px;
     border-bottom: 1px solid #d5d5d5;
-    width: 100vw;
 }
 
 .day{
     position: relative;
     flex-grow: 1;
-    height: 120px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     &_nameDay{
-        font-size: 20px;
+        font-size: 18px;
         opacity: 0.5;
     }
     &_numberDay{
         width: 40px;
         height: 40px;
         align-self: center;
-        margin-top: 15px;
-        font-size: 25px;
+        margin-top: 5px;
+        font-size: 22px;
         text-align: center;
         line-height: 40px;
         border-radius: 50%;
@@ -124,7 +119,7 @@
     bottom: 0;
     height: 20px;
     width: 100%;
-    border-left: 2px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
 }
 
 .today{
