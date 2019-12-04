@@ -15,10 +15,14 @@
   border-radius: 30px;
   border: none;
   outline: none;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
   background-color: white;
   margin-right: 50px;
   font-size: 18px;
+}
+.head_create:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 15px 15px rgba(0, 0, 0, 0.22);
+  transition: 1s;
 }
 .head_today {
   border: 1px solid grey;
@@ -29,6 +33,10 @@
   outline: none;
   margin-right: 50px;
   font-weight: 700;
+}
+.head_today:hover {
+  background-color: #d5d5d5;
+  transition: 1s;
 }
 
 .head__arows {
