@@ -1,8 +1,5 @@
 @import './variables.scss';
+@import './common.scss';
 @import './header.scss';
 
-body{
-    padding: 0;
-    margin: 0;
-    font-family: Roboto;
-}
+@import './schedule.scss';

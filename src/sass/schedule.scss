@@ -1,0 +1,41 @@
+.main {
+    height: calc(100vh - 80px);
+    overflow: auto;
+}
+
+.schedule {
+    display: flex;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    color: #70757a;
+
+    :first-child .hour__text {
+        display: none;
+    }
+}
+.hour {
+    height: 42px;
+    
+    &__text {
+        display: block;
+        margin: -9px 15px 0;
+    }
+}
+
+.days {
+    display: flex;
+    width: 100%;
+    background: repeating-linear-gradient(180deg,
+            #dadce0,
+            #dadce0 1px,
+            #fff 1px,
+            #fff 42px);
+}
+
+.day {
+    width: 100%;
+    border-left: 1px solid #dadce0;
+}
