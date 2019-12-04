@@ -1,5 +1,14 @@
-.navigate {
-  position: fixed;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+}
+
+.head {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -9,6 +18,11 @@
   border-bottom: 1px solid #d5d5d5;
   padding-bottom: 10px;
 }
+
+.navigate {
+  position: fixed;
+}
+
 .navigate_create {
   display: flex;
   justify-content: center;
@@ -23,10 +37,12 @@
   margin-right: 50px;
   font-size: 18px;
 }
+
 .navigate_create:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 15px 15px rgba(0, 0, 0, 0.22);
   transition: 1s;
 }
+
 .navigate_today {
   border: 1px solid grey;
   border-radius: 3px;
@@ -37,6 +53,7 @@
   margin-right: 50px;
   font-weight: 700;
 }
+
 .navigate_today:hover {
   background-color: #d5d5d5;
   transition: 1s;
@@ -46,6 +63,7 @@
   display: flex;
   margin-right: 50px;
 }
+
 .navigate__arows_right {
   background-image: url("https://img.icons8.com/material-sharp/24/000000/forward.png");
   width: 35px;
@@ -54,10 +72,12 @@
   background-position: center;
   background-size: auto;
 }
+
 .navigate__arows_right:hover {
   background-color: #D3D3D3;
   transition: 1s;
 }
+
 .navigate__arows_left {
   background-image: url("https://img.icons8.com/material-sharp/24/000000/forward.png");
   width: 35px;
@@ -67,6 +87,7 @@
   background-position: center;
   background-size: auto;
 }
+
 .navigate__arows_left:hover {
   background-color: #D3D3D3;
   transition: 1s;
@@ -101,10 +122,12 @@
   justify-content: center;
   text-align: center;
 }
+
 .day_nameDay {
   font-size: 20px;
   opacity: 0.5;
 }
+
 .day_numberDay {
   width: 40px;
   height: 40px;
@@ -128,11 +151,45 @@
   background-color: #0000FF;
   color: white;
 }
+  
+.main {
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
 
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Roboto;
+.schedule {
+  display: flex;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  color: #70757a;
+}
+
+.sidebar:first-child .hour__text {
+  display: none;
+}
+
+.hour {
+  height: 42px;
+  width: 60px;
+}
+
+.hour__text {
+  display: block;
+  margin: -9px 10px 0;
+}
+
+.days {
+  display: flex;
+  width: 100%;
+  background: repeating-linear-gradient(180deg, #dadce0, #dadce0 1px, #fff 1px, #fff 42px);
+}
+
+.column-day {
+  width: 100%;
+  border-left: 1px solid #dadce0;
 }
 
 /*# sourceMappingURL=main.css.map */
