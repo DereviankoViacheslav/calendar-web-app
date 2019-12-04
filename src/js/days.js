@@ -21,7 +21,7 @@ const getNameDays = () => {
 };
 
 export function days () {
-    const createDays = createElements(0,7)
+    const createDays = createElements(-1,6)
         .map(day => `
             <div class="day">${getNameDays()} ${getNumberDays()} ${getborder()}</div>`).join('');
 
@@ -31,7 +31,7 @@ export function days () {
 export function writing() {
     const nameDay = document.querySelectorAll('.day_nameDay');
     const numberDays = document.querySelectorAll(".day_numberDay");
-    var date = new Date();
+    let date = new Date();
     let targetDay = 5;
     let targetDate = new Date();
     let delta = targetDay - date.getDay();
@@ -46,5 +46,15 @@ export function writing() {
         }
         numberDays[i].innerHTML = delta++;
     };
+};
+
+export function today () {
+    const numberDays = document.querySelectorAll(".day_numberDay");
+    const date = new Date().getDay();
+    for (let i = 0; i < numberDays.length; i++) {
+        if (i === date - 1) {
+            numberDays[i].classList.add('today');
+        }
+    }
 };
 
