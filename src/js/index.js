@@ -1,1 +1,5 @@
-console.log('Hello!');
+import { addContentSidebar } from './createSidebar.js';
+import { addDays } from './createDays.js';
+
+addContentSidebar();
+addDays();

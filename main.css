@@ -1,3 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+}
+
 .head {
   display: flex;
   justify-content: flex-start;
@@ -80,10 +90,42 @@
   margin-right: 10px;
 }
 
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Roboto;
+.main {
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+.schedule {
+  display: flex;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  color: #70757a;
+}
+.sidebar :first-child .hour__text {
+  display: none;
+}
+
+.hour {
+  height: 42px;
+  width: 60px;
+}
+.hour__text {
+  display: block;
+  margin: -9px 10px 0;
+}
+
+.days {
+  display: flex;
+  width: 100%;
+  background: repeating-linear-gradient(180deg, #dadce0, #dadce0 1px, #fff 1px, #fff 42px);
+}
+
+.day {
+  width: 100%;
+  border-left: 1px solid #dadce0;
 }
 
 /*# sourceMappingURL=main.css.map */
