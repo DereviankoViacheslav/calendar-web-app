@@ -50,11 +50,11 @@ export function writing() {
 
 export function today () {
     const numberDays = document.querySelectorAll(".day_numberDay");
-    const date = new Date().getDay();
+    const date = new Date().getDate();
     for (let i = 0; i < numberDays.length; i++) {
-        if (i === date - 1) {
+        if (Number(numberDays[i].innerHTML) === Number(date)) {
             numberDays[i].classList.add('today');
         }
-    }
+    };
 };
 
