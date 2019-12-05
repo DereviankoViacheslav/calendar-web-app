@@ -1,6 +1,6 @@
 import {createElements} from './functions.js'
 
-let mas = ['Mon',"Tue","Wen","Tuh","Fri","Sat","Sun"];
+let mas = ["Sun",'Mon',"Tue","Wen","Tuh","Fri","Sat"];
 
 const getborder = () => {
     return  createElements(0,1)
@@ -45,6 +45,7 @@ export function writing() {
             numberDays[i].innerHTML = delta;
         }
         numberDays[i].innerHTML = delta++;
+        console.log(nameDay[i])
     };
 };
 
