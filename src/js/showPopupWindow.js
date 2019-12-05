@@ -16,5 +16,3 @@ function showPopupWindow() {
 };
 
 export { showPopupWindow };
-
-
