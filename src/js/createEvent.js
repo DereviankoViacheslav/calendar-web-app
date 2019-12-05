@@ -1,4 +1,4 @@
-import { getEvents, getEventById, createEvent, deleteEvent } from './storage.js'
+import { getEvents, getEventById, addEvent, deleteEvent } from './storage.js'
 
 function createEvent() {
     

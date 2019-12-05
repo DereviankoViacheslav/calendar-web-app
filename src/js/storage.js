@@ -13,7 +13,7 @@ function getEvents() {
     return events;
 };
 
-function createEvent(event) {
+function addEvent(event) {
     events.push({
         id: event.id,
         name: event.name,
@@ -39,15 +39,4 @@ function deleteEvent(idEvent) {
     events.splice(indexEvent, 1);
 };
 
-export { getEvents, getEventById, createEvent, deleteEvent };
-
-
-
-
-import { getEvents, getEventById, createEvent, deleteEvent } from './storage.js'
-
-function createEvent() {
-    
-};
-
-export { createEvent };
+export { getEvents, getEventById, addEvent, deleteEvent };
