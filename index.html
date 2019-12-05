@@ -38,19 +38,20 @@
         </div>
     </main>
     <div class="popup-layer">
-        <div class="popup">
-            <input type="text" placeholder="Добавьте название">
+        <div class="popup event">
+            <input class="event__name" type="text" placeholder="Добавьте название">
             <div class="popup__picker">
-                <input type="date">
-                <input type="time">
+                <input class="event__date-start" type="date">
+                <input class="event__time-start" type="time">
                 <span>-</span>
-                <input type="time">
-                <input type="date">
+                <input class="event__time-end" type="time">
+                <input class="event__date-end" type="date">
             </div>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea class="event__description" name="event__description" cols="30" rows="10">
+            </textarea>
             <div class="footer-popup">
-                <span class="popup__btn-delete">D</span>
-                <button>Сохранить</button>
+                <span class="event__btn-delete">D</span>
+                <button class="event__btn-save">Сохранить</button>
             </div>
             <span class="popup__btn-close">X</span>
         </div>
