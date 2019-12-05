@@ -2,9 +2,9 @@ const events = [
     {
         id: 0,
         name: 'First event',
-        createDate: new Date(2019, 11, 4),
-        startDate: new Date(2019, 11, 7, 9, 30),
-        endDate: new Date(2019, 11, 7, 10, 30),
+        createDate: new Date(2019, 12, 4),
+        startDate: new Date(2019, 12, 7, 9, 30),
+        endDate: new Date(2019, 12, 7, 10, 30),
         description: 'Description text',
     }
 ];

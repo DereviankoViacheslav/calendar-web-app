@@ -6,10 +6,8 @@ function showPopupWindow() {
     popupLayer.addEventListener('click', showPopup);
 
     function showPopup(event) {
-        if (event.target.classList.contains('popup-layer')) {
-            popupLayer.classList.toggle('display-none');
-        }
-        if (event.target.classList.contains('column-day')) {
+        if (event.target.classList.contains('popup-layer') ||
+            event.target.classList.contains('column-day')) {
             popupLayer.classList.toggle('display-none');
         }
     }
