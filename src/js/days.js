@@ -45,7 +45,6 @@ export function writing() {
             numberDays[i].innerHTML = delta;
         }
         numberDays[i].innerHTML = delta++;
-        console.log(nameDay[i])
     };
 };
 
