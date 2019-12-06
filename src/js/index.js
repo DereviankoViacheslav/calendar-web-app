@@ -6,6 +6,7 @@ import { addContentSidebar } from './createSidebar.js';
 import { addDays } from './createDays.js';
 import { showPopupWindow } from './showPopupWindow.js';
 import { createEvent } from './createEvent.js';
+import { showEvents } from './showEvents.js';
 
 days();
 writing();
@@ -14,3 +15,4 @@ addContentSidebar();
 addDays();
 showPopupWindow();
 createEvent();
+showEvents();
