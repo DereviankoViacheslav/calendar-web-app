@@ -168,6 +168,7 @@ body {
 }
 
 .column-day {
+  position: relative;
   width: 100%;
   border-left: 1px solid #dadce0;
 }
@@ -194,6 +195,17 @@ body {
   border-radius: 8px;
   text-align: right;
   background-color: #fff;
+}
+
+.dayEvent {
+  position: absolute;
+  min-height: content;
+  width: 100%;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: #4183f1;
+  font-size: 14px;
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */
