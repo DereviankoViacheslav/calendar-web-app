@@ -1,16 +1,16 @@
-import { getEvents, getEventById, addEvent, deleteEvent } from './storage.js'
+import { getEvents } from './storage.js'
 
 function showEvents() {
     const days = [...document.querySelectorAll('.column-day')];
 
     days.map(day => {
         const dateFromAttribute = new Date(day.dataset.date);
+        dateFromAttribute.setHours(0, 0, 0, 0);
         const listEventsDay = getEvents().filter(event => {
             const startDateEvent = new Date(event.startDate);
             startDateEvent.setHours(0, 0, 0, 0);
             return dateFromAttribute.getTime() === startDateEvent.getTime();
         });
-
         day.append(...getListEventsHTML(listEventsDay));
     });
 };
@@ -31,7 +31,7 @@ function getListEventsHTML(arrEvents) {
         const startYear = elem.startDate.getFullYear();
         const startMonth = elem.startDate.getMonth();
         const startDate = elem.startDate.getDate();
-        dateElem.textContent = `${startDate}/${startMonth}/${startYear}`;
+        dateElem.textContent = `${startDate}/${startMonth + 1}/${startYear}`;
 
         const startHours = elem.startDate.getHours();
         const startMinutes = elem.startDate.getMinutes();
