@@ -4,6 +4,16 @@ const scheduleDays = document.querySelector('.days');
 const navigateCreateButton = document.querySelector('.navigate_create');
 const popupLayer = document.querySelector('.popup-layer');
 const buttonClose = document.querySelector('.popup__btn-close');
+const idEventHTML = document.querySelector('.popup');
+
+const formPopup = {
+    name: document.querySelector('.event__name'),
+    dateStart: document.querySelector('.event__date-start'),
+    dateEnd: document.querySelector('.event__date-end'),
+    timeStart: document.querySelector('.event__time-start'),
+    timeEnd: document.querySelector('.event__time-end'),
+    description: document.querySelector('.event__description'),
+};
 
 function showPopupWindow() {
     scheduleDays.addEventListener('click', hendlerClick);
@@ -22,31 +32,18 @@ function hendlerClick(event) {
 function showPopup() {
     popupLayer.classList.toggle('display-none');
 
-    document.querySelector('.popup').dataset.idEvent = '';
-    document.querySelector('.event__name').value = '';
-    document.querySelector('.event__date-start').value = '';
-    document.querySelector('.event__date-end').value = '';
-    document.querySelector('.event__time-start').value = '';
-    document.querySelector('.event__time-end').value = '';
-    document.querySelector('.event__description').value = '';
+    idEventHTML.dataset.idEvent = '';
+    Object.values(formPopup).map(elem => elem.value = '');
 
     const deleteButton = document.querySelector('.event__btn-delete');
     deleteButton.style.display = 'none';
 };
 
 function showEditPopup(event) {
-    const popupLayer = document.querySelector('.popup-layer');
     popupLayer.classList.toggle('display-none');
+    
     const deleteButton = document.querySelector('.event__btn-delete');
     deleteButton.style.display = 'inline';
-
-    const idEventHTML = document.querySelector('.popup');
-    const inputEventName = document.querySelector('.event__name');
-    const inputEventDateStart = document.querySelector('.event__date-start');
-    const inputEventDateEnd = document.querySelector('.event__date-end');
-    const inputEventTimeStart = document.querySelector('.event__time-start');
-    const inputEventTimeEnd = document.querySelector('.event__time-end');
-    const inputEventDescription = document.querySelector('.event__description');
 
     const idEvent = event.target.closest('.day-event').getAttribute('id');
     idEventHTML.dataset.idEvent = idEvent;
@@ -64,12 +61,12 @@ function showEditPopup(event) {
     let endMinutes = selectedEvent.endDate.getMinutes();
     endMinutes = endMinutes < 10 ? '0' + endMinutes : endMinutes;
 
-    inputEventName.value = selectedEvent.name;
-    inputEventDescription.value = selectedEvent.description;
-    inputEventDateStart.value = date;
-    inputEventDateEnd.value = date;
-    inputEventTimeStart.value = startHours + ':' + startMinutes;
-    inputEventTimeEnd.value = endHours + ':' + endMinutes;
+    formPopup.name.value = selectedEvent.name;
+    formPopup.description.value = selectedEvent.description;
+    formPopup.dateStart.value = date;
+    formPopup.dateEnd.value = date;
+    formPopup.timeStart.value = startHours + ':' + startMinutes;
+    formPopup.timeEnd.value = endHours + ':' + endMinutes;
 }
 
 export { showPopupWindow, showEditPopup };
