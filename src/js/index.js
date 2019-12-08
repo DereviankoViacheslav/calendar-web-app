@@ -6,6 +6,7 @@ import { addContentSidebar } from './createSidebar.js';
 import { showPopupWindow } from './showPopupWindow.js';
 import { createEvent } from './createEvent.js';
 import { routingWeeks } from './routingWeeks.js';
+import { deleteObjectEvent } from './deleteEvent.js';
 
 days();
 writing();
@@ -14,3 +15,4 @@ addContentSidebar();
 showPopupWindow();
 createEvent();
 routingWeeks();
+deleteObjectEvent();

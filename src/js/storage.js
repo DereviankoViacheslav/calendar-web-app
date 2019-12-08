@@ -69,7 +69,7 @@ function getEventById(idEvent) {
 };
 
 function deleteEvent(idEvent) {
-    const indexEvent = undefined;
+    let indexEvent = undefined;
     events.find(({ id }, index) => {
         if (id === idEvent) {
             indexEvent = index;

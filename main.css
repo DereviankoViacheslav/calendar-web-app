@@ -197,7 +197,7 @@ body {
   background-color: #fff;
 }
 
-.dayEvent {
+.day-event {
   position: absolute;
   min-height: content;
   width: 100%;
