@@ -3,10 +3,12 @@ import { getEvents } from './storage.js';
 const scheduleDays = document.querySelector('.days');
 const navigateCreateButton = document.querySelector('.navigate_create');
 const popupLayer = document.querySelector('.popup-layer');
+const buttonClose = document.querySelector('.popup__btn-close');
 
 function showPopupWindow() {
     scheduleDays.addEventListener('click', hendlerClick);
     navigateCreateButton.addEventListener('click', showPopup);
+    buttonClose.addEventListener('click', showPopup);
     popupLayer.addEventListener('click', hendlerClick);
 };
 
