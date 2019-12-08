@@ -23,20 +23,10 @@ function createWeek(startDate) {
     return getLastMonday(startDate);
 };
 
-function getLastMonday(startDate) {
-    let currentDate = new Date(startDate);
-    let currentDayOfWeek = currentDate.getDay();
-    let lastMonday = undefined;
-
-    if (currentDayOfWeek !== 1) {
-        currentDayOfWeek = currentDayOfWeek === 0 ? 6 : currentDayOfWeek - 1;
-        currentDate = currentDate.getTime() - (currentDayOfWeek * 24 * 60 * 60 * 1000);
-        lastMonday = new Date(currentDate);
-    } else {
-        lastMonday = currentDate;
-    }
-
-    return lastMonday;
+function getLastMonday(currentDate) {
+    let date = new Date(currentDate);
+    
+    return new Date(date.setDate(date.getDate() - (date.getDay() || 7) + 1));
 };
 
 function getNextDate(day) {
