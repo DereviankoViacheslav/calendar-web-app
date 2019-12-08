@@ -4,6 +4,7 @@ const scheduleDays = document.querySelector('.days');
 const navigateCreateButton = document.querySelector('.navigate_create');
 const popupLayer = document.querySelector('.popup-layer');
 const buttonClose = document.querySelector('.popup__btn-close');
+const deleteButton = document.querySelector('.event__btn-delete');
 const idEventHTML = document.querySelector('.popup');
 
 const formPopup = {
@@ -35,14 +36,11 @@ function showPopup() {
     idEventHTML.dataset.idEvent = '';
     Object.values(formPopup).map(elem => elem.value = '');
 
-    const deleteButton = document.querySelector('.event__btn-delete');
     deleteButton.style.display = 'none';
 };
 
 function showEditPopup(event) {
     popupLayer.classList.toggle('display-none');
-    
-    const deleteButton = document.querySelector('.event__btn-delete');
     deleteButton.style.display = 'inline';
 
     const idEvent = event.target.closest('.day-event').getAttribute('id');
