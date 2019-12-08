@@ -1,6 +1,15 @@
 import { addEvent, getEventById } from './storage.js'
 import { showEvents } from './showEvents.js';
 
+const formPopup = {
+    name: document.querySelector('.event__name'),
+    dateStart: document.querySelector('.event__date-start'),
+    dateEnd: document.querySelector('.event__date-end'),
+    timeStart: document.querySelector('.event__time-start'),
+    timeEnd: document.querySelector('.event__time-end'),
+    description: document.querySelector('.event__description'),
+};
+
 function createEvent() {
     const btnSave = document.querySelector('.event__btn-save');
     btnSave.addEventListener('click', createObjectEvent);
@@ -8,17 +17,9 @@ function createEvent() {
 
 function createObjectEvent(event) {
     event.preventDefault();
-    
     const idEvent = document.querySelector('.popup').dataset.idEvent;
-    const inputEventName = document.querySelector('.event__name');
-    const inputEventDateStart = document.querySelector('.event__date-start');
-    const inputEventDateEnd = document.querySelector('.event__date-end');
-    const inputEventTimeStart = document.querySelector('.event__time-start');
-    const inputEventTimeEnd = document.querySelector('.event__time-end');
-    const inputEventDescription = document.querySelector('.event__description');
-    
-    const eventStartTime = new Date(inputEventDateStart.value + 'T' + inputEventTimeStart.value);
-    const eventEndTime = new Date(inputEventDateEnd.value + 'T' + inputEventTimeEnd.value);
+    const eventStartTime = new Date(formPopup.dateStart.value + 'T' + formPopup.timeStart.value);
+    const eventEndTime = new Date(formPopup.dateEnd.value + 'T' + formPopup.timeEnd.value);
     
     let newEvent = {};
     
@@ -28,19 +29,14 @@ function createObjectEvent(event) {
         newEvent = getEventById(+idEvent);
     }
     
-    newEvent.name = inputEventName.value;
+    newEvent.name = formPopup.name.value;
     newEvent.startDate = eventStartTime;
     newEvent.endDate = eventEndTime;
-    newEvent.description = inputEventDescription.value;
+    newEvent.description = formPopup.description.value;
     
     if (idEvent === '') addEvent(newEvent);
     
-    inputEventName.value = '';
-    inputEventDateStart.value = '';
-    inputEventDateEnd.value = '';
-    inputEventTimeStart.value = '';
-    inputEventTimeEnd.value = '';
-    inputEventDescription.value = '';
+    Object.values(formPopup).map(elem => elem.value = '');
 
     document.querySelector('.popup-layer').classList.toggle('display-none');
     showEvents();
