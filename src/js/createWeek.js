@@ -6,12 +6,13 @@ function createWeek(startDate) {
 
     let weekday = getLastMonday(startDate);
     const arrDaysElems = [];
-
+    
     for (let i = 0; i < 7; i++) {
+        const valueDateForAttribute = weekday.getDate() < 10 ? '0' + weekday.getDate() : weekday.getDate();
         const day = document.createElement('div');
         day.classList.add('column-day');
         day.setAttribute('data-date',
-            `${weekday.getFullYear()}-${weekday.getMonth() + 1}-${weekday.getDate()}`);
+            `${weekday.getFullYear()}-${weekday.getMonth() + 1}-${valueDateForAttribute}`);
         weekday = getNextDate(weekday);
         arrDaysElems.push(day);
     }

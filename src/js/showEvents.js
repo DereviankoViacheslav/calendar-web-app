@@ -1,4 +1,5 @@
-import { getEvents } from './storage.js'
+import { getEvents } from './storage.js';
+import { showEditPopup } from './showPopupWindow.js';
 
 function showEvents() {
     const days = [...document.querySelectorAll('.column-day')];
@@ -11,16 +12,20 @@ function showEvents() {
             startDateEvent.setHours(0, 0, 0, 0);
             return dateFromAttribute.getTime() === startDateEvent.getTime();
         });
+        day.innerHTML = '';
+
         day.append(...getListEventsHTML(listEventsDay));
     });
 };
 
 function getListEventsHTML(arrEvents) {
+    if (arrEvents.length === 0) return '';
 
     return arrEvents.map(elem => {
         const event = document.createElement('div');
         event.setAttribute('id', elem.id);
-        event.classList.add('dayEvent');
+        event.classList.add('day-event');
+        event.addEventListener('click', showEditPopup);
 
         const title = document.createElement('div');
         title.textContent = elem.name;
@@ -55,6 +60,6 @@ function getListEventsHTML(arrEvents) {
         event.append(title, timeElem, dateElem);
         return event;
     });
-}
+};
 
 export { showEvents };
