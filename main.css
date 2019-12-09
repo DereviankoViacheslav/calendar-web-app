@@ -8,10 +8,6 @@ body {
   font-family: Roboto;
 }
 
-.invalid {
-  border: 1px solid red;
-}
-
 .navigate {
   display: flex;
   justify-content: flex-start;
@@ -299,6 +295,10 @@ body {
 
 .bascket {
   cursor: pointer;
+}
+
+.invalid {
+  border: 1px solid red;
 }
 
 .day-event {
