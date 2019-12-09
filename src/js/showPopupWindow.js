@@ -6,6 +6,7 @@ const popupLayer = document.querySelector('.popup-layer');
 const buttonClose = document.querySelector('.popup__btn-close');
 const deleteButton = document.querySelector('.event__btn-delete');
 const idEventPopup = document.querySelector('.popup');
+const btnSave = document.querySelector('.event__btn-save');
 
 const formPopup = {
     name: document.querySelector('.event__name'),
@@ -31,6 +32,7 @@ function hendlerClick(event) {
 };
 
 function showPopup() {
+    btnSave.setAttribute("disabled", "disabled");
     popupLayer.classList.toggle('display-none');
 
     idEventPopup.dataset.idEvent = '';
@@ -40,6 +42,7 @@ function showPopup() {
 };
 
 function showEditPopup(event) {
+    btnSave.removeAttribute('disabled');
     popupLayer.classList.toggle('display-none');
     deleteButton.style.display = 'inline';
 

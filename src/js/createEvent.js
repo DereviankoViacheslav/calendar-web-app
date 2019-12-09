@@ -1,7 +1,8 @@
 import { addEvent, getEventById } from './storage.js'
 import { showEvents } from './showEvents.js';
+import { validateForm } from './validateForm.js';
 
-const formPopup = {
+const formFields = {
     name: document.querySelector('.event__name'),
     dateStart: document.querySelector('.event__date-start'),
     dateEnd: document.querySelector('.event__date-end'),
@@ -10,20 +11,21 @@ const formPopup = {
     description: document.querySelector('.event__description'),
 };
 
+const btnSave = document.querySelector('.event__btn-save');
+
 function createEvent() {
-    const btnSave = document.querySelector('.event__btn-save');
     btnSave.addEventListener('click', createObjectEvent);
 };
 
 function createObjectEvent(event) {
     event.preventDefault();
     const idEvent = document.querySelector('.popup').dataset.idEvent;
-    const eventStartTime = new Date(formPopup.dateStart.value + 'T' + formPopup.timeStart.value);
-    const eventEndTime = new Date(formPopup.dateEnd.value + 'T' + formPopup.timeEnd.value);
+    const eventStartTime = new Date(formFields.dateStart.value + 'T' + formFields.timeStart.value);
+    const eventEndTime = new Date(formFields.dateEnd.value + 'T' + formFields.timeEnd.value);
     
     let newEvent = null;
 
-    // вызвать валидацию
+    if (validateForm(formFields, btnSave)) return;
     
     if (idEvent === '') {
         newEvent = {id: Date.now()};
@@ -31,14 +33,14 @@ function createObjectEvent(event) {
         newEvent = getEventById(+idEvent);
     }
     
-    newEvent.name = formPopup.name.value;
+    newEvent.name = formFields.name.value;
     newEvent.startDate = eventStartTime;
     newEvent.endDate = eventEndTime;
-    newEvent.description = formPopup.description.value;
+    newEvent.description = formFields.description.value;
     
     if (idEvent === '') addEvent(newEvent);
     
-    Object.values(formPopup).map(elem => elem.value = '');
+    Object.values(formFields).map(elem => elem.value = '');
 
     document.querySelector('.popup-layer').classList.toggle('display-none');
     showEvents();

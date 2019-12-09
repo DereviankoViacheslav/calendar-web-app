@@ -8,6 +8,10 @@ body {
   font-family: Roboto;
 }
 
+.invalid {
+  border: 1px solid red;
+}
+
 .navigate {
   display: flex;
   justify-content: flex-start;
