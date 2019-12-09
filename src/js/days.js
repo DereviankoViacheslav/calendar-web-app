@@ -24,25 +24,10 @@ export function days (date) {
 days(new Date());
 nameDay();
 
-let newDate = new Date();
-
-document.querySelector('.navigate__arows_right').addEventListener('click',() => {
-    newDate.setDate(newDate.getDate() + 7);
-    days(newDate);
-    nameDay();
-});
-
-document.querySelector('.navigate__arows_left').addEventListener('click',() => {
-    newDate.setDate(newDate.getDate() - 7);
-    days(newDate);
-    nameDay();
-});
-
-function nameDay() {
+export function nameDay() {
     let day = document.querySelectorAll('.day_nameDay');
     for (let i = 0; i < day.length; i++) {
-        day[i].innerHTML = massNameDay[i]
+        day[i].innerHTML = massNameDay[i];
     }
 };
 
-let collectNumberDay = document.querySelectorAll('.day_numberDay');
