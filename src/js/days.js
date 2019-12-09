@@ -12,7 +12,7 @@ export function days (date) {
     let monday = getMonday(date);
     const createDays = createElements()
         .map(elem => 
-            `<div class="day">
+            `<div class="day" data-date="${monday.getFullYear()}-${monday.getMonth()}">
                 <span class="day_nameDay"></span>
                 <div class="day_numberDay">${new Date(monday.setDate(monday.getDate() + elem)).getDate()}</div>
                 <div class="LittleBorder"></div>
