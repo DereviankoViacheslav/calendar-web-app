@@ -1,4 +1,4 @@
-import { deleteEvent, getEvents } from './storage.js';
+import { deleteEvent } from './storage.js';
 import { showEvents } from './showEvents.js';
 
 const deleteButton = document.querySelector('.event__btn-delete');
