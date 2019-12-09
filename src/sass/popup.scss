@@ -21,3 +21,70 @@
     text-align: right;
     background-color: #fff;
 }
+
+.event__name{
+   border: none;
+   border-bottom: 2px solid #d5d5d5;
+   width: 90%;
+   font-size: 20px;
+   letter-spacing: 2px;
+   font-style: italic;
+   outline: none;
+   margin-top: 20px;
+}
+
+.popup__picker{
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    align-items: center;
+    position: relative;
+}
+
+.event__date-start,
+.event__date-end{
+    border: none;
+    background-size: contain;
+    outline: none;
+    width: 150px;
+}
+
+.event__time-start,
+.event__time-end {
+    border: none;
+    background-size: contain;
+    outline: none;
+    margin-right: 4px;
+    width: 72px;
+}
+
+.event__description{
+    border: none;
+    width: 90%;
+    outline: none;
+}
+
+.footer-popup{
+    display: flex;
+    justify-content: space-between;
+}
+
+.clock{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.line{
+    left: 237px;
+    width: 8px;
+    margin-right: 35px;
+    border-top: 1px solid black;
+}
+
+.multilineText{
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+}

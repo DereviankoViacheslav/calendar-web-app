@@ -7,7 +7,6 @@ import { routingWeeks } from './routingWeeks.js';
 import { deleteObjectEvent } from './deleteEvent.js';
 
 addContentSidebar();
-addDays();
 showPopupWindow();
 createEvent();
 routingWeeks();
