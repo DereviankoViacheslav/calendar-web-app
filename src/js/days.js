@@ -27,17 +27,15 @@ nameDay();
 let newDate = new Date();
 
 document.querySelector('.navigate__arows_right').addEventListener('click',() => {
-    newDate.setDate(newDate.getDate() + 7)
-    today()
-    days(newDate)
-    nameDay()
+    newDate.setDate(newDate.getDate() + 7);
+    days(newDate);
+    nameDay();
 });
 
 document.querySelector('.navigate__arows_left').addEventListener('click',() => {
-    newDate.setDate(newDate.getDate() - 7)
-    today()
-    days(newDate)
-    nameDay()
+    newDate.setDate(newDate.getDate() - 7);
+    days(newDate);
+    nameDay();
 });
 
 function nameDay() {
