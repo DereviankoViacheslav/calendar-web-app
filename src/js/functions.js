@@ -1,7 +1,5 @@
-export function createElements (from,to) {
-    let result = [];
-    for (let i = 0; i < to; i++) {
-        result.push(i);
-    };
+export function createElements () {
+    let result = [0,1,1,1,1,1,1];
+    
     return result
 }
