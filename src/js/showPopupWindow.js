@@ -32,7 +32,6 @@ function hendlerClick(event) {
 };
 
 function showPopup() {
-    btnSave.setAttribute("disabled", "disabled");
     popupLayer.classList.toggle('display-none');
 
     idEventPopup.dataset.idEvent = '';
@@ -42,7 +41,6 @@ function showPopup() {
 };
 
 function showEditPopup(event) {
-    btnSave.removeAttribute('disabled');
     popupLayer.classList.toggle('display-none');
     deleteButton.style.display = 'inline';
 
