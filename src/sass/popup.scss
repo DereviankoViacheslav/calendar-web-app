@@ -21,3 +21,102 @@
     text-align: right;
     background-color: #fff;
 }
+
+.event__name{
+   border: none;
+   border-bottom: 2px solid #d5d5d5;
+   width: 90%;
+   font-size: 20px;
+   letter-spacing: 2px;
+   font-style: italic;
+   outline: none;
+   margin-top: 30px;
+}
+
+.popup__picker{
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    align-items: center;
+    position: relative;
+}
+
+.event__date-start,
+.event__date-end{
+    border: none;
+    background-size: contain;
+    outline: none;
+    width: 150px;
+}
+
+.event__time-start,
+.event__time-end {
+    border: none;
+    background-size: contain;
+    outline: none;
+    margin-right: 4px;
+    width: 72px;
+}
+
+.event__description{
+    border: none;
+    width: 90%;
+    outline: none;
+}
+
+.footer-popup{
+    position: relative;
+    height: 40px;
+    display: flex;
+}
+
+.event__btn-save {
+    position: absolute;
+    right: 5px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: royalblue;
+    color: white;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup__btn-close{
+    position: absolute;
+    right: 10px;
+    top: -3px;
+}
+
+.clock{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.line{
+    left: 237px;
+    width: 8px;
+    margin-right: 35px;
+    border-top: 1px solid black;
+}
+
+.multilineText{
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.close{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.bascket{
+    cursor: pointer;
+}
