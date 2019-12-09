@@ -8,7 +8,7 @@ function getMonday(startDate) {
     return new Date(date.setDate(date.getDate() - (date.getDay() || 7) + 1));
 };
 
- function days (date) {
+export function days (date) {
     let monday = getMonday(date);
     const createDays = createElements()
         .map(elem => 
