@@ -30,7 +30,7 @@
    letter-spacing: 2px;
    font-style: italic;
    outline: none;
-   margin-top: 20px;
+   margin-top: 30px;
 }
 
 .popup__picker{
@@ -76,12 +76,18 @@
     height: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    background: blue;
+    background: royalblue;
     color: white;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.popup__btn-close{
+    position: absolute;
+    right: 10px;
+    top: -3px;
 }
 
 .clock{
