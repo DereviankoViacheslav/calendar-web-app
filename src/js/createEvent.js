@@ -21,10 +21,12 @@ function createObjectEvent(event) {
     const eventStartTime = new Date(formPopup.dateStart.value + 'T' + formPopup.timeStart.value);
     const eventEndTime = new Date(formPopup.dateEnd.value + 'T' + formPopup.timeEnd.value);
     
-    let newEvent = {};
+    let newEvent = null;
+
+    // вызвать валидацию
     
     if (idEvent === '') {
-        newEvent.id = Date.now();
+        newEvent = {id: Date.now()};
     } else {
         newEvent = getEventById(+idEvent);
     }

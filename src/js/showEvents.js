@@ -5,25 +5,31 @@ function showEvents() {
     const days = [...document.querySelectorAll('.column-day')];
 
     days.map(day => {
-        const dateFromAttribute = new Date(day.dataset.date);
-        dateFromAttribute.setHours(0, 0, 0, 0);
+        const weekDay = new Date(day.dataset.date);
+        weekDay.setHours(0, 0, 0, 0);
         const listEventsDay = getEvents().filter(event => {
             const startDateEvent = new Date(event.startDate);
+            const endDateEvent = new Date(event.endDate);
             startDateEvent.setHours(0, 0, 0, 0);
-            return dateFromAttribute.getTime() === startDateEvent.getTime();
+            endDateEvent.setHours(0, 0, 0, 0);
+            const isEqualStartDate = weekDay.getTime() === startDateEvent.getTime();
+            const isEqualEndDate = weekDay.getTime() === endDateEvent.getTime();
+            const isAllDayEvent = weekDay > startDateEvent && weekDay < endDateEvent;
+
+            return isEqualStartDate || isEqualEndDate || isAllDayEvent;
         });
         day.innerHTML = '';
 
-        day.append(...getListEventsHTML(listEventsDay));
+        day.append(...getListEventsHTML(listEventsDay, weekDay));
     });
 };
 
-function getListEventsHTML(arrEvents) {
+function getListEventsHTML(arrEvents, weekDay) {
     if (arrEvents.length === 0) return '';
 
     return arrEvents.map(elem => {
         const event = document.createElement('div');
-        event.setAttribute('id', elem.id);
+        event.setAttribute('data-id-event', elem.id);
         event.classList.add('day-event');
         event.addEventListener('click', showEditPopup);
 
@@ -51,10 +57,31 @@ function getListEventsHTML(arrEvents) {
             `${startHoursText}:${startMinutesText} - ${endHoursText}:${endMinutesText}`;
 
         const valueMinuteMoveY = 42 / 60;
-        const startPointY = valueMinuteMoveY * ((startHours * 60) + startMinutes);
+        let startPointY = 0;
+
+        if (elem.startDate.getTime() > weekDay.getTime()) {
+            startPointY = valueMinuteMoveY * ((startHours * 60) + startMinutes);
+        }
+
         event.style.top = `${startPointY}px`;
 
-        const diffMinutes = (Date.parse(elem.endDate) - Date.parse(elem.startDate)) / (1000 * 60);
+        let diffMinutes = 1;
+        const ONE_DAY = 24 * 60 * 60 * 1000;
+
+        if (elem.endDate - weekDay < ONE_DAY) {
+            diffMinutes = (elem.endDate - elem.startDate) / (1000 * 60);
+        } else {
+            diffMinutes = ((weekDay.getTime() + ONE_DAY) - elem.startDate.getTime()) / (1000 * 60);
+        }
+
+        if (elem.startDate < weekDay) {
+            diffMinutes = (elem.endDate - weekDay) / (1000 * 60);
+        }
+
+        if (elem.startDate < weekDay && elem.endDate > (weekDay.getTime() + ONE_DAY)) {
+            diffMinutes = ONE_DAY / (1000 * 60);
+        }
+
         event.style.height = `${valueMinuteMoveY * diffMinutes}px`;
 
         event.append(title, timeElem, dateElem);
