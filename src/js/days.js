@@ -1,60 +1,48 @@
 import {createElements} from './functions.js'
+let month = new Date().getMonth();
+document.querySelector('.week').setAttribute('data-month',month);
+const massNameDay = ["Mon","Tue","Wen","Tuh","Fri","Sat","Sun"];
 
-let mas = ["Sun",'Mon',"Tue","Wen","Tuh","Fri","Sat"];
-
-const getborder = () => {
-    return  createElements(0,1)
-            .map(name => `
-                <div class="LittleBorder"></div>`).join('');
+function getMonday(startDate) {
+    const date = new Date(startDate);
+    return new Date(date.setDate(date.getDate() - (date.getDay() || 7) + 1));
 };
 
-const getNumberDays = () => {
-    return  createElements(0,1)
-            .map(name => `
-                <div class="day_numberDay"></div>`).join('');
-};
-
-const getNameDays = () => {
-    return  createElements(0,1)
-            .map(name => `
-                <span class="day_nameDay"></span>`).join('');
-};
-
-export function days () {
-    const createDays = createElements(-1,6)
-        .map(day => `
-            <div class="day">${getNameDays()} ${getNumberDays()} ${getborder()}</div>`).join('');
+export function days (date) {
+    let monday = getMonday(date);
+    const createDays = createElements()
+        .map(elem => 
+            `<div class="day">
+                <span class="day_nameDay"></span>
+                <div class="day_numberDay">${new Date(monday.setDate(monday.getDate() + elem)).getDate()}</div>
+                <div class="LittleBorder"></div>
+            </div>`).join('');
 
     document.querySelector(".week").innerHTML = createDays;
-}
-
-export function writing() {
-    const nameDay = document.querySelectorAll('.day_nameDay');
-    const numberDays = document.querySelectorAll(".day_numberDay");
-    let date = new Date();
-    let targetDay = 5;
-    let targetDate = new Date();
-    let delta = targetDay - date.getDay();
-    if (delta >= 0) {targetDate.setDate(date.getDate() + delta)}
-    else {targetDate.setDate(date.getDate() + 7 + delta)};
-
-
-    for (let i = 0; i < nameDay.length; i++) {
-        nameDay[i].innerHTML = mas[i];
-        if (i === 0) {
-            numberDays[i].innerHTML = delta;
-        }
-        numberDays[i].innerHTML = delta++;
-    };
 };
 
-export function today () {
-    const numberDays = document.querySelectorAll(".day_numberDay");
-    const date = new Date().getDate();
-    for (let i = 0; i < numberDays.length; i++) {
-        if (Number(numberDays[i].innerHTML) === Number(date)) {
-            numberDays[i].classList.add('today');
-        }
-    };
+days(new Date());
+nameDay();
+
+let newDate = new Date();
+
+document.querySelector('.navigate__arows_right').addEventListener('click',() => {
+    newDate.setDate(newDate.getDate() + 7);
+    days(newDate);
+    nameDay();
+});
+
+document.querySelector('.navigate__arows_left').addEventListener('click',() => {
+    newDate.setDate(newDate.getDate() - 7);
+    days(newDate);
+    nameDay();
+});
+
+function nameDay() {
+    let day = document.querySelectorAll('.day_nameDay');
+    for (let i = 0; i < day.length; i++) {
+        day[i].innerHTML = massNameDay[i]
+    }
 };
 
+let collectNumberDay = document.querySelectorAll('.day_numberDay');
