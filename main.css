@@ -154,26 +154,31 @@ body {
 
 .hour {
   height: 42px;
-  width: 60px;
+  width: 55px;
 }
 .hour__text {
   display: block;
-  margin: -9px 10px 0;
+  margin: -9px 0 0 10px;
 }
 
 .days {
   display: flex;
   width: 100%;
+  padding-left: 5px;
   background: repeating-linear-gradient(180deg, #dadce0, #dadce0 1px, #fff 1px, #fff 42px);
 }
 
 .column-day {
+  position: relative;
   width: 100%;
   border-left: 1px solid #dadce0;
 }
 
-.popup-layer {
+.display-none {
   display: none;
+}
+
+.popup-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -191,6 +196,17 @@ body {
   border-radius: 8px;
   text-align: right;
   background-color: #fff;
+}
+
+.day-event {
+  position: absolute;
+  min-height: content;
+  width: 100%;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: #4183f1;
+  font-size: 14px;
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

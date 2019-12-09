@@ -37,23 +37,23 @@
             <div class="days"></div>
         </div>
     </main>
-    <div class="popup-layer">
-        <div class="popup">
-            <input type="text" placeholder="Добавьте название">
+    <div class="popup-layer display-none">
+        <form class="popup event" data-id-event="">
+            <input class="event__name" name="eventName" type="text" placeholder="Добавьте название">
             <div class="popup__picker">
-                <input type="date">
-                <input type="time">
+                <input class="event__date-start" name="eventDateStart" type="date">
+                <input class="event__time-start" name="eventTimeStart" type="time">
                 <span>-</span>
-                <input type="time">
-                <input type="date">
+                <input class="event__time-end" name="eventTimeEnd" type="time">
+                <input class="event__date-end" name="eventDateEnd" type="date">
             </div>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea class="event__description" name="eventDescription" cols="30" rows="10"></textarea>
             <div class="footer-popup">
-                <span class="popup__btn-delete">D</span>
-                <button>Сохранить</button>
+                <span class="event__btn-delete">D</span>
+                <button class="event__btn-save">Сохранить</button>
             </div>
             <span class="popup__btn-close">X</span>
-        </div>
+        </form>
     </div>
     <script src="./src/js/index.js" type="module"></script>
     <script src="./src/js/days.js" type="module"></script>
