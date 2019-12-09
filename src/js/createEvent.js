@@ -1,6 +1,5 @@
 import { addEvent, getEventById } from './storage.js'
 import { showEvents } from './showEvents.js';
-import { validateForm } from './validateForm.js';
 
 const formFields = {
     name: document.querySelector('.event__name'),
@@ -19,27 +18,35 @@ function createEvent() {
 
 function createObjectEvent(event) {
     event.preventDefault();
+
+    const isValide = Object.values(formFields).find(field => {
+        if (!field.value && !field.classList.contains('event__description')) {
+            field.classList.add('invalid');
+            return true;
+        }
+    });
+
+    if (isValide) return;
+
     const idEvent = document.querySelector('.popup').dataset.idEvent;
     const eventStartTime = new Date(formFields.dateStart.value + 'T' + formFields.timeStart.value);
     const eventEndTime = new Date(formFields.dateEnd.value + 'T' + formFields.timeEnd.value);
-    
+
     let newEvent = null;
 
-    if (validateForm(formFields, btnSave)) return;
-    
     if (idEvent === '') {
-        newEvent = {id: Date.now()};
+        newEvent = { id: Date.now() };
     } else {
         newEvent = getEventById(+idEvent);
     }
-    
+
     newEvent.name = formFields.name.value;
     newEvent.startDate = eventStartTime;
     newEvent.endDate = eventEndTime;
     newEvent.description = formFields.description.value;
-    
+
     if (idEvent === '') addEvent(newEvent);
-    
+
     Object.values(formFields).map(elem => elem.value = '');
 
     document.querySelector('.popup-layer').classList.toggle('display-none');

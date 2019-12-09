@@ -1,4 +1,4 @@
-import { getEvents, getEventById } from './storage.js';
+import { getEventById } from './storage.js';
 
 const scheduleDays = document.querySelector('.days');
 const navigateCreateButton = document.querySelector('.navigate_create');
@@ -6,9 +6,8 @@ const popupLayer = document.querySelector('.popup-layer');
 const buttonClose = document.querySelector('.popup__btn-close');
 const deleteButton = document.querySelector('.event__btn-delete');
 const idEventPopup = document.querySelector('.popup');
-const btnSave = document.querySelector('.event__btn-save');
 
-const formPopup = {
+const formFields = {
     name: document.querySelector('.event__name'),
     dateStart: document.querySelector('.event__date-start'),
     dateEnd: document.querySelector('.event__date-end'),
@@ -22,6 +21,13 @@ function showPopupWindow() {
     navigateCreateButton.addEventListener('click', showPopup);
     buttonClose.addEventListener('click', showPopup);
     popupLayer.addEventListener('click', hendlerClick);
+    
+    Object.values(formFields).map(field => {
+        if (!field.classList.contains('event__description')) {
+            field.addEventListener('blur', validateValue);
+        }
+        return field;
+    });
 };
 
 function hendlerClick(event) {
@@ -31,17 +37,28 @@ function hendlerClick(event) {
     }
 };
 
+function validateValue(event) {
+    if (!event.target.value) {
+        event.target.classList.add('invalid');
+        return;
+    }
+    event.target.classList.remove('invalid');
+};
+
 function showPopup() {
     popupLayer.classList.toggle('display-none');
 
     idEventPopup.dataset.idEvent = '';
-    Object.values(formPopup).map(elem => elem.value = '');
+    Object.values(formFields).map(elem => {
+        elem.classList.remove('invalid');
+        elem.value = ''
+    });
 
     deleteButton.style.display = 'none';
 };
 
 function showEditPopup(event) {
-    popupLayer.classList.toggle('display-none');
+    showPopup();
     deleteButton.style.display = 'inline';
 
     const idEvent = event.target.closest('.day-event').dataset.idEvent;
@@ -74,12 +91,12 @@ function showEditPopup(event) {
     let endMinutes = selectedEvent.endDate.getMinutes();
     endMinutes = endMinutes < 10 ? '0' + endMinutes : endMinutes;
 
-    formPopup.name.value = selectedEvent.name;
-    formPopup.description.value = selectedEvent.description;
-    formPopup.dateStart.value = `${startEventYear}-${startEventMonth}-${startEventDate}`;
-    formPopup.dateEnd.value = `${endEventYear}-${endEventMonth}-${endEventDate}`;
-    formPopup.timeStart.value = startHours + ':' + startMinutes;
-    formPopup.timeEnd.value = endHours + ':' + endMinutes;
+    formFields.name.value = selectedEvent.name;
+    formFields.description.value = selectedEvent.description;
+    formFields.dateStart.value = `${startEventYear}-${startEventMonth}-${startEventDate}`;
+    formFields.dateEnd.value = `${endEventYear}-${endEventMonth}-${endEventDate}`;
+    formFields.timeStart.value = startHours + ':' + startMinutes;
+    formFields.timeEnd.value = endHours + ':' + endMinutes;
 }
 
 export { showPopupWindow, showEditPopup };

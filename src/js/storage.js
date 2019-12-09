@@ -64,7 +64,7 @@ function getEvents() {
 function addEvent(event) {
     events.push({
         id: event.id,
-        name: event.name || '(Нет заголовка)',
+        name: event.name,
         createDate: new Date(),
         startDate: event.startDate,
         endDate: event.endDate,
