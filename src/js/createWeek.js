@@ -6,7 +6,7 @@ function createWeek(startDate) {
 
     let weekday = getLastMonday(startDate);
     const arrDaysElems = [];
-    
+
     for (let i = 0; i < 7; i++) {
         const valueDateForAttribute = weekday.getDate() < 10 ? '0' + weekday.getDate() : weekday.getDate();
         const day = document.createElement('div');

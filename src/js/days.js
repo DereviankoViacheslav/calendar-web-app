@@ -1,16 +1,16 @@
-import {createElements} from './functions.js'
-const massNameDay = ["Mon","Tue","Wen","Tuh","Fri","Sat","Sun"];
+import { createElements } from './functions.js'
+const massNameDay = ["Mon", "Tue", "Wen", "Tuh", "Fri", "Sat", "Sun"];
 
 function getMonday(startDate) {
     const date = new Date(startDate);
     return new Date(date.setDate(date.getDate() - (date.getDay() || 7) + 1));
 };
 
-export function days (date) {
+export function days(date) {
     let monday = getMonday(date);
     let mass = []
     const createDays = createElements()
-        .map(elem => 
+        .map(elem =>
             `<div class="day" data-date="${monday.getFullYear()}-${monday.getMonth()}">
                 <span class="day_nameDay"></span>
                 <div class="day_numberDay">${new Date(monday.setDate(monday.getDate() + elem)).getDate()}</div>
@@ -35,9 +35,9 @@ export function today() {
     const day = document.querySelectorAll('.day');
     const yearToday = new Date().getFullYear();
     for (let i = 0; i < numberDay.length; i++) {
-        if (+numberDay[i].innerHTML === +dayToday 
-            && +day[i].getAttribute('data-date').slice(5) === +monthToday 
-            && +day[i].getAttribute('data-date').slice(0,4) === +yearToday) {
+        if (+numberDay[i].innerHTML === +dayToday
+            && +day[i].getAttribute('data-date').slice(5) === +monthToday
+            && +day[i].getAttribute('data-date').slice(0, 4) === +yearToday) {
             numberDay[i].classList.add('today');
         }
     }

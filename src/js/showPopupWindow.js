@@ -21,7 +21,7 @@ function showPopupWindow() {
     navigateCreateButton.addEventListener('click', showPopup);
     buttonClose.addEventListener('click', showPopup);
     popupLayer.addEventListener('click', hendlerClick);
-    
+
     Object.values(formFields).map(field => {
         if (!field.classList.contains('event__description')) {
             field.addEventListener('blur', validateValue);
@@ -64,7 +64,7 @@ function showEditPopup(event) {
     const idEvent = event.target.closest('.day-event').dataset.idEvent;
     idEventPopup.dataset.idEvent = idEvent;
     const selectedEvent = getEventById(+idEvent);
-    
+
     const startEventYear = selectedEvent.startDate.getFullYear();
 
     let startEventMonth = selectedEvent.startDate.getMonth() + 1;

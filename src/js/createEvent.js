@@ -45,7 +45,7 @@ function createObjectEvent(event) {
         alert('Вы не можете редактировать событие раньше чем за 15 мин до начала!!!!');
         return;
     };
-    
+
     if (eventEndTime - eventStartTime > (6 * 60 * 60 * 1000)) {
         alert('Событие не может длиться дольше 6-ти часов!!!!');
         return;

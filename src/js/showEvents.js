@@ -27,17 +27,17 @@ function showEvents() {
             timeLine.classList.add('redLine');
             day.append(timeLine);
 
-            showCurrentTime(new Date(),timeLine);
+            showCurrentTime(new Date(), timeLine);
             setInterval(function () {
-                showCurrentTime(new Date(),timeLine);
-            },60000);
+                showCurrentTime(new Date(), timeLine);
+            }, 60000);
         }
 
         day.append(...getListEventsHTML(listEventsDay, weekDay));
     });
 };
 
-function showCurrentTime (currentDate,timeLine) {
+function showCurrentTime(currentDate, timeLine) {
     let hour = currentDate.getHours() * 60 + currentDate.getMinutes();
     let heightOneMinute = 42 / 60;
     timeLine.style.top = (hour * heightOneMinute) + 'px'
