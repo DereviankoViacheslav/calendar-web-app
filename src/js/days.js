@@ -1,6 +1,4 @@
 import {createElements} from './functions.js'
-let month = new Date().getMonth();
-document.querySelector('.week').setAttribute('data-month',month);
 const massNameDay = ["Mon","Tue","Wen","Tuh","Fri","Sat","Sun"];
 
 function getMonday(startDate) {
@@ -22,13 +20,26 @@ export function days (date) {
     document.querySelector(".week").innerHTML = createDays;
 };
 
-days(new Date());
-nameDay();
-
 export function nameDay() {
     let day = document.querySelectorAll('.day_nameDay');
     for (let i = 0; i < day.length; i++) {
         day[i].innerHTML = massNameDay[i];
     }
 };
+days(new Date());
 
+export function today() {
+    const numberDay = document.querySelectorAll('.day_numberDay');
+    const dayToday = new Date().getDate();
+    const monthToday = new Date().getMonth();
+    const day = document.querySelectorAll('.day');
+    const yearToday = new Date().getFullYear();
+    for (let i = 0; i < numberDay.length; i++) {
+        if (+numberDay[i].innerHTML === +dayToday 
+            && +day[i].getAttribute('data-date').slice(5) === +monthToday 
+            && +day[i].getAttribute('data-date').slice(0,4) === +yearToday) {
+            numberDay[i].classList.add('today');
+        }
+    }
+};
+today();

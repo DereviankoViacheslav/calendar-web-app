@@ -1,12 +1,11 @@
 import {days} from './days.js'
 import {nameDay} from './days.js'
+import {today} from './days.js'
 
 const monthNow = document.querySelector('.monthNow');
 const massMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 monthNow.innerHTML = massMonths[new Date().getMonth()];
 let newDate = new Date();
-
-const elemDay = document.querySelectorAll('.day')[0].getAttribute('data-date').slice(0,4);
 
 document.querySelector('.navigate__arows_right').addEventListener('click',() => {
     let nextMonday = newDate.setDate(newDate.getDate() + 7);
@@ -15,6 +14,7 @@ document.querySelector('.navigate__arows_right').addEventListener('click',() => 
     year();
     nowMonth();
     monthFuture();
+    today();
 });
 
 document.querySelector('.navigate__arows_left').addEventListener('click',() => {
@@ -24,6 +24,7 @@ document.querySelector('.navigate__arows_left').addEventListener('click',() => {
     year();
     nowMonth();
     monthFuture();
+    today();
 });
 
 document.querySelector('.navigate_today').addEventListener('click',() => {
@@ -34,6 +35,7 @@ document.querySelector('.navigate_today').addEventListener('click',() => {
     nowMonth();
     nowMonth();
     monthFuture();
+    today();
 });
 
 year();
@@ -51,7 +53,8 @@ function nowMonth() {
 function monthFuture () {
     let futureMonth = document.querySelectorAll('.day')[6].getAttribute('data-date').slice(5);
     const nowMonth = document.querySelectorAll('.day')[0].getAttribute('data-date').slice(5);
-    if (document.querySelectorAll('.day_numberDay')[6].innerHTML === '1' && document.querySelectorAll('.day')[5].getAttribute('data-date').slice(5) === document.querySelectorAll('.day')[6].getAttribute('data-date').slice(5)) {
+    const monthFormerDay = document.querySelectorAll('.day')[5].getAttribute('data-date').slice(5)
+    if (document.querySelectorAll('.day_numberDay')[6].innerHTML === '1' && monthFormerDay === futureMonth) {
         document.querySelector('.mounthFutuar').innerHTML = massMonths[+futureMonth++];
     } else {
         document.querySelector('.mounthFutuar').innerHTML = '';
