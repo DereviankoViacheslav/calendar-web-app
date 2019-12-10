@@ -10,6 +10,7 @@ function getMonday(startDate) {
 
 export function days (date) {
     let monday = getMonday(date);
+    let mass = []
     const createDays = createElements()
         .map(elem => 
             `<div class="day" data-date="${monday.getFullYear()}-${monday.getMonth()}">

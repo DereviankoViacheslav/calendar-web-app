@@ -49,12 +49,14 @@ function nowMonth() {
 }
 
 function monthFuture () {
-    const futureMonth = document.querySelectorAll('.day')[6].getAttribute('data-date').slice(5);
+    let futureMonth = document.querySelectorAll('.day')[6].getAttribute('data-date').slice(5);
     const nowMonth = document.querySelectorAll('.day')[0].getAttribute('data-date').slice(5);
-    if (+futureMonth !== +nowMonth) {
-        document.querySelector('.mounthFutuar').innerHTML = massMonths[+futureMonth];
+    if (document.querySelectorAll('.day_numberDay')[6].innerHTML === '1' && document.querySelectorAll('.day')[5].getAttribute('data-date').slice(5) === document.querySelectorAll('.day')[6].getAttribute('data-date').slice(5)) {
+        document.querySelector('.mounthFutuar').innerHTML = massMonths[+futureMonth++];
     } else {
         document.querySelector('.mounthFutuar').innerHTML = '';
     }
+    if (+futureMonth !== +nowMonth) {
+        document.querySelector('.mounthFutuar').innerHTML = massMonths[+futureMonth];
+    }
 }
-
