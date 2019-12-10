@@ -47,14 +47,6 @@ const events = [
         endDate: new Date(2019, 11, 15, 3, 0),
         description: 'Description text',
     },
-    {
-        id: 6,
-        name: 'Third week',
-        createDate: new Date(2019, 10, 1),
-        startDate: new Date(2019, 11, 11, 6, 0),
-        endDate: new Date(2019, 11, 13, 8, 0),
-        description: 'Description text',
-    },
 ];
 
 function getEvents() {

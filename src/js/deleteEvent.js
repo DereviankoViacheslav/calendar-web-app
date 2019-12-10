@@ -1,4 +1,4 @@
-import { deleteEvent } from './storage.js';
+import { deleteEvent, getEventById } from './storage.js';
 import { showEvents } from './showEvents.js';
 
 const deleteButton = document.querySelector('.event__btn-delete');
@@ -9,6 +9,14 @@ function deleteObjectEvent() {
 
 function deleteSelectedEvent(event) {
     const idEvent = event.target.closest('.popup').dataset.idEvent;
+
+    const selectedEvent = getEventById(+idEvent);
+
+    if (selectedEvent.startDate - new Date() > (15 * 60 * 1000)) {
+        alert('Вы не можете удалить событие раньше чем за 15 мин до начала!!!!');
+        return;
+    };
+
     deleteEvent(+idEvent);
     showEvents();
     document.querySelector('.popup-layer').classList.toggle('display-none');
