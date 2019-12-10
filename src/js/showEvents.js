@@ -7,6 +7,8 @@ function showEvents() {
     days.map(day => {
         const weekDay = new Date(day.dataset.date);
         weekDay.setHours(0, 0, 0, 0);
+        const currentDay = new Date();
+
         const listEventsDay = getEvents().filter(event => {
             const startDateEvent = new Date(event.startDate);
             const endDateEvent = new Date(event.endDate);
@@ -19,6 +21,12 @@ function showEvents() {
             return isEqualStartDate || isEqualEndDate || isAllDayEvent;
         });
         day.innerHTML = '';
+
+        if (weekDay.setHours(0, 0, 0, 0) === currentDay.setHours(0, 0, 0, 0)) {
+            const timeLine = document.createElement('div');
+            timeLine.classList.add('redLine');
+            day.append(timeLine);
+        }
 
         day.append(...getListEventsHTML(listEventsDay, weekDay));
     });

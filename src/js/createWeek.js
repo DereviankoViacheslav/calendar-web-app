@@ -11,8 +11,8 @@ function createWeek(startDate) {
         const valueDateForAttribute = weekday.getDate() < 10 ? '0' + weekday.getDate() : weekday.getDate();
         const day = document.createElement('div');
         day.classList.add('column-day');
-        day.setAttribute('data-date',
-            `${weekday.getFullYear()}-${weekday.getMonth() + 1}-${valueDateForAttribute}`);
+        const date = `${weekday.getFullYear()}-${weekday.getMonth() + 1}-${valueDateForAttribute}`;
+        day.setAttribute('data-date', date);
         weekday = getNextDate(weekday);
         arrDaysElems.push(day);
     }
@@ -25,7 +25,7 @@ function createWeek(startDate) {
 
 function getLastMonday(currentDate) {
     let date = new Date(currentDate);
-    
+
     return new Date(date.setDate(date.getDate() - (date.getDay() || 7) + 1));
 };
 
