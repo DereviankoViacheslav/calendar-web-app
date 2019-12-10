@@ -30,7 +30,7 @@ function showEvents() {
             showCurrentTime(new Date(),timeLine);
             setInterval(function () {
                 showCurrentTime(new Date(),timeLine);
-            },1000);
+            },60000);
         }
 
         day.append(...getListEventsHTML(listEventsDay, weekDay));
