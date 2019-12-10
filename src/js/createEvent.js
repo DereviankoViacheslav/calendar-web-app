@@ -1,5 +1,6 @@
 import { addEvent, getEventById } from './storage.js'
 import { showEvents } from './showEvents.js';
+import { validationIntersectionEvents } from './validationIntersectionEvents.js';
 
 const formFields = {
     name: document.querySelector('.event__name'),
@@ -19,14 +20,14 @@ function createEvent() {
 function createObjectEvent(event) {
     event.preventDefault();
 
-    const isValide = Object.values(formFields).find(field => {
+    const invalidFields = Object.values(formFields).find(field => {
         if (!field.value && !field.classList.contains('event__description')) {
             field.classList.add('invalid');
             return true;
         }
     });
 
-    if (isValide) return;
+    if (invalidFields) return;
 
     const idEvent = document.querySelector('.popup').dataset.idEvent;
     const eventStartTime = new Date(formFields.dateStart.value + 'T' + formFields.timeStart.value);
@@ -39,6 +40,23 @@ function createObjectEvent(event) {
     } else {
         newEvent = getEventById(+idEvent);
     }
+
+    if (newEvent.startDate - new Date() > (15 * 60 * 1000)) {
+        console.log('Вы не можете редактировать событие раньше чем за 15 мин до начала!!!!');
+        
+        alert('Вы не можете редактировать событие раньше чем за 15 мин до начала!!!!');
+        return;
+    };
+    
+    if (eventEndTime - eventStartTime > (6 * 60 * 60 * 1000)) {
+        alert('Событие не может длиться дольше 6-ти часов!!!!');
+        return;
+    };
+
+    if (validationIntersectionEvents(eventStartTime, eventEndTime, idEvent)) {
+        alert('У Вас уже запланировано событие на это время!!!!');
+        return;
+    };
 
     newEvent.name = formFields.name.value;
     newEvent.startDate = eventStartTime;
