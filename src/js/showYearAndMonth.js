@@ -1,7 +1,6 @@
 import {days} from './days.js'
 import {nameDay} from './days.js'
 import {today} from './days.js'
-
 const monthNow = document.querySelector('.monthNow');
 const massMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 monthNow.innerHTML = massMonths[new Date().getMonth()];
