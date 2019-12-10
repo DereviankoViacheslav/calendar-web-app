@@ -137,7 +137,19 @@ body {
 .redLine {
   position: absolute;
   width: 100%;
-  height: 3px;
+  height: 2px;
+  background-color: red;
+}
+
+.redLine:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -6px;
+  left: -8px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
   background-color: red;
 }
 
