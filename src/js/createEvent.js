@@ -42,8 +42,6 @@ function createObjectEvent(event) {
     }
 
     if (newEvent.startDate - new Date() > (15 * 60 * 1000)) {
-        console.log('Вы не можете редактировать событие раньше чем за 15 мин до начала!!!!');
-        
         alert('Вы не можете редактировать событие раньше чем за 15 мин до начала!!!!');
         return;
     };
