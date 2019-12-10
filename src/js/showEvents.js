@@ -37,7 +37,6 @@ function showEvents() {
     });
 };
 
-
 function showCurrentTime (currentDate,timeLine) {
     let hour = currentDate.getHours() * 60 + currentDate.getMinutes();
     let heightOneMinute = 42 / 60;
