@@ -226,7 +226,6 @@ body {
   font-style: italic;
   outline: none;
   margin-top: 30px;
-  margin-right: 18px;
 }
 
 .popup__picker {
@@ -239,6 +238,8 @@ body {
 
 .event__date-start,
 .event__date-end {
+  padding: 2px;
+  margin-left: 18px;
   border: none;
   background-size: contain;
   outline: none;
@@ -250,7 +251,11 @@ body {
   border: none;
   background-size: contain;
   outline: none;
-  margin-right: 4px;
+  padding: 2px;
+  background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .event__description {
@@ -289,14 +294,13 @@ body {
 .clock {
   width: 25px;
   height: 25px;
-  margin-right: 5px;
 }
 
 .line {
   left: 237px;
   width: 8px;
-  margin-right: 35px;
-  border-top: 1px solid black;
+  margin: 0 5px;
+  border-top: 2px solid black;
 }
 
 .multilineText {

@@ -51,9 +51,10 @@ function showPopup() {
     popupLayer.classList.toggle('display-none');
 
     idEventPopup.dataset.idEvent = '';
-    Object.values(formFields).map(elem => {
-        elem.classList.remove('invalid');
-        elem.value = ''
+    Object.values(formFields).map(field => {
+        field.classList.remove('invalid');
+
+        if (!field.classList.contains('select')) field.value = '';
     });
 
     deleteButton.style.display = 'none';

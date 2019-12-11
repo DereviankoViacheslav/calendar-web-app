@@ -22,19 +22,18 @@
     background-color: #fff;
 }
 
-.event__name{
-   border: none;
-   border-bottom: 2px solid #d5d5d5;
-   width: 90%;
-   font-size: 20px;
-   letter-spacing: 2px;
-   font-style: italic;
-   outline: none;
-   margin-top: 30px;
-   margin-right: 18px;
+.event__name {
+    border: none;
+    border-bottom: 2px solid #d5d5d5;
+    width: 90%;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-style: italic;
+    outline: none;
+    margin-top: 30px;
 }
 
-.popup__picker{
+.popup__picker {
     display: flex;
     margin-top: 90px;
     margin-bottom: 90px;
@@ -43,7 +42,9 @@
 }
 
 .event__date-start,
-.event__date-end{
+.event__date-end {
+    padding: 2px;
+    margin-left: 18px;
     border: none;
     background-size: contain;
     outline: none;
@@ -55,17 +56,21 @@
     border: none;
     background-size: contain;
     outline: none;
-    margin-right: 4px;
+    padding: 2px;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-.event__description{
+.event__description {
     border: none;
     width: 90%;
     outline: none;
     resize: none;
 }
 
-.footer-popup{
+.footer-popup {
     position: relative;
     height: 40px;
     display: flex;
@@ -79,46 +84,45 @@
     padding-right: 20px;
     background: royalblue;
     color: white;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.popup__btn-close{
+.popup__btn-close {
     position: absolute;
     right: 10px;
     top: -3px;
 }
 
-.clock{
+.clock {
     width: 25px;
     height: 25px;
-    margin-right: 5px;
 }
 
-.line{
+.line {
     left: 237px;
     width: 8px;
-    margin-right: 35px;
-    border-top: 1px solid black;
+    margin: 0 5px;
+    border-top: 2px solid black;
 }
 
-.multilineText{
+.multilineText {
     position: absolute;
     left: 20px;
     width: 30px;
     height: 30px;
 }
 
-.close{
+.close {
     width: 30px;
     height: 30px;
     cursor: pointer;
     margin-top: 10px;
 }
 
-.bascket{
+.bascket {
     cursor: pointer;
 }
 
