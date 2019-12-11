@@ -68,38 +68,31 @@ function showEditPopup(event) {
     idEventPopup.dataset.idEvent = idEvent;
     const selectedEvent = getEventById(+idEvent);
 
-    const startEventYear = selectedEvent.startDate.getFullYear();
-
-    let startEventMonth = selectedEvent.startDate.getMonth() + 1;
-    startEventMonth = startEventMonth < 10 ? '0' + startEventMonth : startEventMonth;
-
-    let startEventDate = selectedEvent.startDate.getDate();
-    startEventDate = startEventDate < 10 ? '0' + startEventDate : startEventDate;
-
-    const endEventYear = selectedEvent.endDate.getFullYear();
-
-    let endEventMonth = selectedEvent.endDate.getMonth() + 1;
-    endEventMonth = endEventMonth < 10 ? '0' + endEventMonth : endEventMonth;
-
-    let endEventDate = selectedEvent.endDate.getDate();
-    endEventDate = endEventDate < 10 ? '0' + endEventDate : endEventDate;
-
-    let startHours = selectedEvent.startDate.getHours();
-    startHours = startHours < 10 ? '0' + startHours : startHours;
-    let startMinutes = selectedEvent.startDate.getMinutes();
-    startMinutes = startMinutes < 10 ? '0' + startMinutes : startMinutes;
-
-    let endHours = selectedEvent.endDate.getHours();
-    endHours = endHours < 10 ? '0' + endHours : endHours;
-    let endMinutes = selectedEvent.endDate.getMinutes();
-    endMinutes = endMinutes < 10 ? '0' + endMinutes : endMinutes;
-
     formFields.name.value = selectedEvent.name;
     formFields.description.value = selectedEvent.description;
-    formFields.dateStart.value = `${startEventYear}-${startEventMonth}-${startEventDate}`;
-    formFields.dateEnd.value = `${endEventYear}-${endEventMonth}-${endEventDate}`;
-    formFields.timeStart.value = startHours + ':' + startMinutes;
-    formFields.timeEnd.value = endHours + ':' + endMinutes;
+    formFields.dateStart.value = dateToString(selectedEvent.startDate);
+    formFields.dateEnd.value = dateToString(selectedEvent.endDate);
+    formFields.timeStart.value = timeToString(selectedEvent.startDate);
+    formFields.timeEnd.value = timeToString(selectedEvent.endDate);
+};
+
+function dateToString(date) {
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month : month;
+    let day = date.getDate();
+    day = day < 10 ? '0' + day : day;
+
+    return `${year}-${month}-${day}`;
+};
+
+function timeToString(date) {
+    let hour = date.getHours();
+    hour = hour < 10 ? '0' + hour : hour;
+    let minutes = date.getMinutes();
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    return `${hour}:${minutes}`;
 }
 
 export { showPopupWindow, showEditPopup };
