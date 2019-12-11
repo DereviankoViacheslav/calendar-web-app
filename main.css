@@ -226,12 +226,13 @@ body {
   font-style: italic;
   outline: none;
   margin-top: 30px;
+  margin-right: 18px;
 }
 
 .popup__picker {
   display: flex;
-  margin-top: 60px;
-  margin-bottom: 40px;
+  margin-top: 90px;
+  margin-bottom: 90px;
   align-items: center;
   position: relative;
 }
@@ -256,6 +257,7 @@ body {
   border: none;
   width: 90%;
   outline: none;
+  resize: none;
 }
 
 .footer-popup {

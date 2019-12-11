@@ -1,4 +1,3 @@
-import { createElements } from './functions.js';
 import { days } from './days.js';
 import { today } from './days.js';
 import { addContentSidebar } from './createSidebar.js';
@@ -11,11 +10,11 @@ import { right } from './showYearAndMonth.js';
 import { left } from './showYearAndMonth.js';
 import { btnToday } from './showYearAndMonth.js';
 
+days(new Date());
 addContentSidebar();
 showPopupWindow();
 createEvent();
 routingWeeks();
 deleteObjectEvent();
-days(new Date());
 nameDay();
 today();

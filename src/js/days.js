@@ -1,4 +1,3 @@
-import { createElements } from './functions.js'
 const massNameDay = ["Mon", "Tue", "Wen", "Tuh", "Fri", "Sat", "Sun"];
 
 function getMonday(startDate) {
@@ -8,16 +7,18 @@ function getMonday(startDate) {
 
 export function days(date) {
     let monday = getMonday(date);
-    let mass = []
-    const createDays = createElements()
-        .map(elem =>
-            `<div class="day" data-date="${monday.getFullYear()}-${monday.getMonth()}">
-                <span class="day_nameDay"></span>
-                <div class="day_numberDay">${new Date(monday.setDate(monday.getDate() + elem)).getDate()}</div>
-                <div class="LittleBorder"></div>
-            </div>`).join('');
+    let encrimentDay = 0;
+    let weekHtml = '';
+    for (let i = 0; i < 7; i++) {
+        weekHtml += `<div class="day" data-date="${monday.getFullYear()}-${monday.getMonth()}">
+                        <span class="day_nameDay"></span>
+                        <div class="day_numberDay">${new Date(monday.setDate(monday.getDate() + encrimentDay)).getDate()}</div>
+                        <div class="LittleBorder"></div>
+                    </div>`;
+        encrimentDay = 1;
+    };
 
-    document.querySelector(".week").innerHTML = createDays;
+    document.querySelector(".week").innerHTML = weekHtml;
 };
 
 export function nameDay() {
@@ -26,6 +27,7 @@ export function nameDay() {
         day[i].innerHTML = massNameDay[i];
     }
 };
+
 days(new Date());
 
 export function today() {
@@ -42,4 +44,5 @@ export function today() {
         }
     }
 };
+
 today();
