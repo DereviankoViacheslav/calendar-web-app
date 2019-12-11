@@ -1,4 +1,3 @@
-import { createElements } from './functions.js'
 const massNameDay = ["Mon", "Tue", "Wen", "Tuh", "Fri", "Sat", "Sun"];
 
 function getMonday(startDate) {
