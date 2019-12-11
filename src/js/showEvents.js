@@ -53,6 +53,7 @@ function getListEventsHTML(arrEvents, weekDay) {
         event.addEventListener('click', showEditPopup);
 
         const title = document.createElement('div');
+        title.classList.add('day-event__title');
         title.textContent = elem.name;
 
         const timeElem = document.createElement('span');

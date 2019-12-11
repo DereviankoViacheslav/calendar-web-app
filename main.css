@@ -329,5 +329,9 @@ body {
   font-size: 14px;
   color: white;
 }
+.day-event__title {
+  height: 16px;
+  overflow: hidden;
+}
 
 /*# sourceMappingURL=main.css.map */
