@@ -1,4 +1,5 @@
 import { getEventById } from './storage.js';
+import { createSelectTime } from './createSelectTime.js';
 
 const scheduleDays = document.querySelector('.days');
 const navigateCreateButton = document.querySelector('.navigate_create');
@@ -46,6 +47,7 @@ function validateValue(event) {
 };
 
 function showPopup() {
+    createSelectTime(formFields.timeStart, formFields.timeEnd);
     popupLayer.classList.toggle('display-none');
 
     idEventPopup.dataset.idEvent = '';
