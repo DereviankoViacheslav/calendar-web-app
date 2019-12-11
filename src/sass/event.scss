@@ -7,4 +7,9 @@
     background-color: #4183f1;
     font-size: 14px;
     color: white;
+    
+    &__title {
+        height: 16px;
+        overflow: hidden;
+    }
 }
