@@ -7,8 +7,15 @@ const massMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep
 monthNow.innerHTML = massMonths[new Date().getMonth()];
 let newDate = new Date();
 
+window.addEventListener('storage',(e) => {
+   newDate = new Date(JSON.parse(e.newValue));
+   days(new Date(JSON.parse(e.newValue)))
+});
+
 export const right = document.querySelector('.navigate__arows_right').addEventListener('click', () => {
     let nextMonday = newDate.setDate(newDate.getDate() + 7);
+    console.log(new Date(nextMonday).getDate())
+    const month = document.querySelector('.monthNow');
     days(nextMonday);
     nameDay();
     year();
@@ -16,6 +23,8 @@ export const right = document.querySelector('.navigate__arows_right').addEventLi
     monthFuture();
     today();
 });
+
+
 export const left = document.querySelector('.navigate__arows_left').addEventListener('click', () => {
     let formerMonday = newDate.setDate(newDate.getDate() - 7);
     days(formerMonday);
@@ -39,6 +48,17 @@ export const btnToday = document.querySelector('.navigate_today').addEventListen
 
 year();
 nowMonth();
+
+window.addEventListener('storage', (e) => {
+    let yearNow = new Date(JSON.parse(e.newValue)).getDate();
+    nameDay();
+    year();
+    nowMonth();
+    nowMonth();
+    monthFuture();
+    today();
+});
+
 function year() {
     const elemYear = document.querySelectorAll('.day')[0].getAttribute('data-date').slice(0, 4);
     document.querySelector('.year').innerHTML = elemYear;
