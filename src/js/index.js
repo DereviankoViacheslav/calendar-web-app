@@ -10,7 +10,6 @@ import { right } from './showYearAndMonth.js';
 import { left } from './showYearAndMonth.js';
 import { btnToday } from './showYearAndMonth.js';
 
-days(new Date());
 addContentSidebar();
 showPopupWindow();
 createEvent();
