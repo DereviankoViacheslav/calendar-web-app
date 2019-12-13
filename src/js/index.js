@@ -9,6 +9,7 @@ import { deleteObjectEvent } from './deleteEvent.js';
 // import { right } from './showYearAndMonth.js';
 // import { left } from './showYearAndMonth.js';
 // import { btnToday } from './showYearAndMonth.js';
+import { showWeek } from './showWeek.js';
 
 addContentSidebar();
 showPopupWindow();
