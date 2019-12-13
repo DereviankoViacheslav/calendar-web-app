@@ -14,8 +14,6 @@ window.addEventListener('storage',(e) => {
 
 export const right = document.querySelector('.navigate__arows_right').addEventListener('click', () => {
     let nextMonday = newDate.setDate(newDate.getDate() + 7);
-    console.log(new Date(nextMonday).getDate())
-    const month = document.querySelector('.monthNow');
     days(nextMonday);
     nameDay();
     year();

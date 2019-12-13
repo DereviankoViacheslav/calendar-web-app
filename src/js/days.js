@@ -8,7 +8,7 @@ let local = '';
 export function days(date) {
     let monday = getMonday(date);
     localStorage.setItem('monday', JSON.stringify(monday));
-    local = new Date(JSON.parse(localStorage.getItem('monday')))
+    local = new Date(JSON.parse(localStorage.getItem('monday'))).getFullYear() !== 1969 ? new Date(JSON.parse(localStorage.getItem('monday'))) : new Date();
     let encrimentDay = 0;
     let weekHtml = '';
     for (let i = 0; i < 7; i++) {
@@ -30,7 +30,14 @@ export function nameDay() {
     }
 };
 let getMondayinStorage = new Date(JSON.parse(localStorage.getItem('monday')));
-days(getMondayinStorage);
+if (getMondayinStorage.getFullYear() === 1969) {
+    days(new Date()); 
+} 
+if (getMondayinStorage.getFullYear() !== 1969) {
+    days(getMondayinStorage);
+}
+    
+
 
 
 export function today() {
