@@ -1,4 +1,4 @@
-import { addEvent, getEventById } from './storage.js'
+import { addEvent, getEventById, deleteEvent } from './storage.js';
 import { showEvents } from './showEvents.js';
 import { validationIntersectionEvents } from './validationIntersectionEvents.js';
 
@@ -61,8 +61,9 @@ function createObjectEvent(event) {
     newEvent.endDate = eventEndTime;
     newEvent.description = formFields.description.value;
 
-    if (idEvent === '') addEvent(newEvent);
-
+    if (idEvent !== '') deleteEvent(+idEvent);
+    
+    addEvent(newEvent)
     Object.values(formFields).map(elem => elem.value = '');
 
     document.querySelector('.popup-layer').classList.toggle('display-none');

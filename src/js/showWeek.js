@@ -1,10 +1,11 @@
+import { getShowedMonday } from './storage.js';
 import { showEvents } from './showEvents.js';
 
-function createWeek(startDate) {
+function showWeek() {
     const days = document.querySelector('.days');
     days.innerHTML = '';
 
-    let weekday = getLastMonday(startDate);
+    let weekday = getShowedMonday();
     const arrDaysElems = [];
 
     for (let i = 0; i < 7; i++) {
@@ -19,20 +20,12 @@ function createWeek(startDate) {
 
     days.append(...arrDaysElems);
     showEvents();
-
-    return getLastMonday(startDate);
-};
-
-function getLastMonday(currentDate) {
-    let date = new Date(currentDate);
-
-    return new Date(date.setDate(date.getDate() - (date.getDay() || 7) + 1));
 };
 
 function getNextDate(day) {
     let dateInMs = day.getTime();
-
+    
     return new Date(dateInMs + (24 * 60 * 60 * 1000));
 };
 
-export { createWeek };
+export { showWeek };

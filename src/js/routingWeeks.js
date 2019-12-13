@@ -1,4 +1,5 @@
-import { createWeek } from './createWeek.js';
+import { getShowedMonday, setShowedMonday } from './storage.js';
+import { showWeek } from './showWeek.js';
 
 function routingWeeks() {
     const arowsRight = document.querySelector('.navigate__arows_right');
@@ -8,24 +9,30 @@ function routingWeeks() {
     const buttonToday = document.querySelector('.navigate_today');
     buttonToday.addEventListener('click', moveWeek);
 
-    const showedMonday = createWeek(new Date());
-    let showedMondayInMs = showedMonday.getTime();
-    const sevenDaysInMs = 24 * 60 * 60 * 1000 * 7;
+    if(!getShowedMonday()) setShowedMonday(getLastMonday());
+    showWeek();
+    const SEVEN_DAYS = 24 * 60 * 60 * 1000 * 7;
 
     function moveWeek(event) {
+        let showedMondayInMs = getShowedMonday().getTime();
+
         if (event.target.classList.contains('navigate__arows_right')) {
-            showedMondayInMs += sevenDaysInMs;
-            createWeek(showedMondayInMs);
+            setShowedMonday(new Date(showedMondayInMs + SEVEN_DAYS));
         }
         if (event.target.classList.contains('navigate__arows_left')) {
-            showedMondayInMs -= sevenDaysInMs;
-            createWeek(showedMondayInMs);
+            setShowedMonday(new Date(showedMondayInMs - SEVEN_DAYS));
         }
         if (event.target.classList.contains('navigate_today')) {
-            showedMondayInMs = showedMonday.getTime();
-            createWeek(new Date());
+            setShowedMonday(getLastMonday());
         }
+        showWeek();
     };
+};
+
+function getLastMonday() {
+    let date = new Date();
+
+    return new Date(date.setDate(date.getDate() - (date.getDay() || 7) + 1));
 };
 
 export { routingWeeks };

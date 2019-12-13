@@ -3,13 +3,14 @@ import { showEditPopup } from './showPopupWindow.js';
 
 function showEvents() {
     const days = [...document.querySelectorAll('.column-day')];
+    const listEvents = getEvents();
 
     days.map(day => {
         const weekDay = new Date(day.dataset.date);
         weekDay.setHours(0, 0, 0, 0);
         const currentDay = new Date();
 
-        const listEventsDay = getEvents().filter(event => {
+        const listEventsDay = listEvents.filter(event => {
             const startDateEvent = new Date(event.startDate);
             const endDateEvent = new Date(event.endDate);
             startDateEvent.setHours(0, 0, 0, 0);
