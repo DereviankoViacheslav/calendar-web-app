@@ -3,26 +3,38 @@ import { showEvents } from './showEvents.js';
 
 function showWeek() {
     const days = document.querySelector('.days');
-
     days.innerHTML = '';
-
     let weekday = getShowedMonday();
     const arrDaysElems = [];
-
-    // <<<<<<< refactor 
-    const headerWeek = document.querySelector('.week');
+    // <<<<<<< refactor
+    const arrMonthes = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const arrNamesWeekdays = ["Mon", "Tue", "Wen", "Tuh", "Fri", "Sat", "Sun"];
+    const headerWeek = document.querySelector('.week');
+    const titleHeader = document.querySelector('.navigate__MonthAndYear');
     let headerWeekHTML = '';
+    let titleHeaderText = '';
+    let oldYear = '';
+    let oldMonth = '';
     const currentDate = new Date();
     // refactor >>>>>>>
     for (let i = 0; i < 7; i++) {
         const valueDateForAttribute = weekday.getDate() < 10 ? '0' + weekday.getDate() : weekday.getDate();
         const day = document.createElement('div');
         // <<<<<<< refactor
+        if (i === 0) {
+            oldYear = weekday.getFullYear();
+            oldMonth = weekday.getMonth();
+        }
+        if (i === 6) {
+            oldMonth = oldMonth !== weekday.getMonth() ? arrMonthes[oldMonth] : '';
+            oldYear = oldYear !== weekday.getFullYear() ? ' ' + oldYear : '';
+            titleHeaderText = 
+            `${oldMonth}${oldYear}${oldMonth ? ' - ' : ''}${arrMonthes[weekday.getMonth()]} ${weekday.getFullYear()}`;
+        }
         let markedDay = new Date(weekday);
         let isToday = markedDay.setHours(0, 0, 0, 0) === currentDate.setHours(0, 0, 0, 0);
-        headerWeekHTML += 
-        `<div class="day">
+        headerWeekHTML +=
+            `<div class="day">
             <span class="day_nameDay">${arrNamesWeekdays[i]}</span>
             <div class="day_numberDay ${isToday ? 'today' : ''}">${valueDateForAttribute}</div>
             <div class="LittleBorder"></div>
@@ -34,7 +46,9 @@ function showWeek() {
         weekday = getNextDate(weekday);
         arrDaysElems.push(day);
     }
-
+    // <<<<<<< refactor
+    titleHeader.textContent = titleHeaderText;
+    // refactor >>>>>>>
     headerWeek.innerHTML = headerWeekHTML;
     days.append(...arrDaysElems);
     showEvents();
