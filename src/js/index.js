@@ -9,6 +9,7 @@ import { nameDay } from './days.js';
 import { right } from './showYearAndMonth.js';
 import { left } from './showYearAndMonth.js';
 import { btnToday } from './showYearAndMonth.js';
+import { showWeek } from './showWeek.js';
 
 addContentSidebar();
 showPopupWindow();
@@ -17,3 +18,10 @@ routingWeeks();
 deleteObjectEvent();
 nameDay();
 today();
+showWeek();
+
+window.addEventListener('storage', onStorageChange);
+
+function onStorageChange() {
+    showWeek();
+}

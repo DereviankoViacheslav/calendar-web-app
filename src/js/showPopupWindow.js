@@ -15,6 +15,7 @@ const formFields = {
     timeStart: document.querySelector('.event__time-start'),
     timeEnd: document.querySelector('.event__time-end'),
     description: document.querySelector('.event__description'),
+    color: document.querySelector('.event__color-picker'),
 };
 
 function showPopupWindow() {
@@ -22,13 +23,9 @@ function showPopupWindow() {
     navigateCreateButton.addEventListener('click', showPopup);
     buttonClose.addEventListener('click', showPopup);
     popupLayer.addEventListener('click', hendlerClick);
-
-    Object.values(formFields).map(field => {
-        if (!field.classList.contains('event__description')) {
-            field.addEventListener('blur', validateValue);
-        }
-        return field;
-    });
+    formFields.name.addEventListener('blur', validateValue);
+    formFields.dateStart.addEventListener('blur', validateValue);
+    formFields.dateEnd.addEventListener('blur', validateValue);
 };
 
 function hendlerClick(event) {
@@ -54,7 +51,13 @@ function showPopup() {
     Object.values(formFields).map(field => {
         field.classList.remove('invalid');
 
-        if (!field.classList.contains('select')) field.value = '';
+        if (!field.classList.contains('select')) {
+            field.value = '';
+        };
+
+        if (field.classList.contains('event__color-picker')) {
+            field.value = '#4183f1';
+        };
     });
 
     deleteButton.style.display = 'none';
@@ -74,6 +77,7 @@ function showEditPopup(event) {
     formFields.dateEnd.value = dateToString(selectedEvent.endDate);
     formFields.timeStart.value = timeToString(selectedEvent.startDate);
     formFields.timeEnd.value = timeToString(selectedEvent.endDate);
+    formFields.color.value = selectedEvent.color;
 };
 
 function dateToString(date) {
