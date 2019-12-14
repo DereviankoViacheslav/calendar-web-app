@@ -216,6 +216,24 @@ body {
   text-align: right;
   background-color: #fff;
 }
+.popup__picker {
+  display: flex;
+  margin: 45px 0;
+  align-items: center;
+  position: relative;
+}
+.popup__color-picker {
+  margin: 45px 0 0 45px;
+  text-align: left;
+}
+.popup__color-picker_label-text {
+  margin-right: 15px;
+}
+.popup__btn-close {
+  position: absolute;
+  right: 10px;
+  top: -3px;
+}
 
 .event__name {
   border: none;
@@ -227,17 +245,7 @@ body {
   outline: none;
   margin-top: 30px;
 }
-
-.popup__picker {
-  display: flex;
-  margin-top: 90px;
-  margin-bottom: 90px;
-  align-items: center;
-  position: relative;
-}
-
-.event__date-start,
-.event__date-end {
+.event__date-start, .event__date-end {
   padding: 2px;
   margin-left: 18px;
   border: none;
@@ -245,9 +253,7 @@ body {
   outline: none;
   width: 150px;
 }
-
-.event__time-start,
-.event__time-end {
+.event__time-start, .event__time-end {
   border: none;
   background-size: contain;
   outline: none;
@@ -257,20 +263,12 @@ body {
   -moz-appearance: none;
   appearance: none;
 }
-
 .event__description {
   border: none;
   width: 90%;
   outline: none;
   resize: none;
 }
-
-.footer-popup {
-  position: relative;
-  height: 40px;
-  display: flex;
-}
-
 .event__btn-save {
   position: absolute;
   right: 5px;
@@ -285,10 +283,10 @@ body {
   cursor: pointer;
 }
 
-.popup__btn-close {
-  position: absolute;
-  right: 10px;
-  top: -3px;
+.footer-popup {
+  position: relative;
+  height: 40px;
+  display: flex;
 }
 
 .clock {
