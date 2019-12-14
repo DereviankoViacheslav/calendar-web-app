@@ -38,6 +38,7 @@ function addEvent(event) {
         startDate: event.startDate,
         endDate: event.endDate,
         description: event.description,
+        color: event.color,
     });
     updateLocalStorage('listEvents', listEvents)
 };

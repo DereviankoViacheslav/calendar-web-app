@@ -51,6 +51,7 @@ function getListEventsHTML(arrEvents, weekDay) {
         const event = document.createElement('div');
         event.setAttribute('data-id-event', elem.id);
         event.classList.add('day-event');
+        event.style.backgroundColor = elem.color;
         event.addEventListener('click', showEditPopup);
 
         const title = document.createElement('div');
