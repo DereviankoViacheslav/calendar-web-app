@@ -2,16 +2,6 @@ import { addEvent, getEventById, deleteEvent } from './storage.js';
 import { showEvents } from './showEvents.js';
 import { validationIntersectionEvents } from './validationIntersectionEvents.js';
 
-const formFields = {
-    name: document.querySelector('.event__name'),
-    dateStart: document.querySelector('.event__date-start'),
-    dateEnd: document.querySelector('.event__date-end'),
-    timeStart: document.querySelector('.event__time-start'),
-    timeEnd: document.querySelector('.event__time-end'),
-    description: document.querySelector('.event__description'),
-    color: document.querySelector('.event__color-picker'),
-};
-
 const btnSave = document.querySelector('.event__btn-save');
 
 function createEvent() {
@@ -20,21 +10,26 @@ function createEvent() {
 
 function createObjectEvent(event) {
     event.preventDefault();
+    const arrInputs = [...document.querySelectorAll('.popup input')];
 
-    const invalidFields = Object.values(formFields).find(field => {
-        if (!field.classList.contains('event__description') &&
-            !field.classList.contains('event__color-picker') &&
-            !field.value) {
-            field.classList.add('invalid');
-            return true;
+    const invalidFields = arrInputs.filter(elem => {
+        if (!elem.classList.contains('event__color-picker') &&
+            !elem.value) {
+            elem.classList.add('invalid');
+            return elem;
         }
     });
 
-    if (invalidFields) return;
+    if (invalidFields.length > 0) return;
 
-    const idEvent = document.querySelector('.popup').dataset.idEvent;
-    const eventStartTime = new Date(formFields.dateStart.value + 'T' + formFields.timeStart.value);
-    const eventEndTime = new Date(formFields.dateEnd.value + 'T' + formFields.timeEnd.value);
+    const popup = document.querySelector('.popup');
+    const idEvent = popup.dataset.idEvent;
+
+    const dataInputs = [...new FormData(popup)]
+        .reduce((acc, [field, value]) => ({ ...acc, [field]: value }), {});
+
+    const eventStartTime = new Date(dataInputs.dateStart + 'T' + dataInputs.timeStart);
+    const eventEndTime = new Date(dataInputs.dateEnd + 'T' + dataInputs.timeEnd);
 
     let newEvent = null;
 
@@ -59,14 +54,13 @@ function createObjectEvent(event) {
         return;
     };
 
-    newEvent.name = formFields.name.value;
+    newEvent.name = dataInputs.name;
     newEvent.startDate = eventStartTime;
     newEvent.endDate = eventEndTime;
-    newEvent.description = formFields.description.value;
-    newEvent.color = formFields.color.value;
+    newEvent.description = document.querySelector('.event__description').value;
+    newEvent.color = dataInputs.color;
 
     if (idEvent !== '') deleteEvent(+idEvent);
-
     addEvent(newEvent)
 
     document.querySelector('.popup-layer').classList.toggle('display-none');

@@ -1,12 +1,11 @@
 import { getEventById } from './storage.js';
-import { createSelectTime } from './createSelectTime.js';
 
 const scheduleDays = document.querySelector('.days');
 const navigateCreateButton = document.querySelector('.navigate_create');
 const popupLayer = document.querySelector('.popup-layer');
 const buttonClose = document.querySelector('.popup__btn-close');
 const deleteButton = document.querySelector('.event__btn-delete');
-const idEventPopup = document.querySelector('.popup');
+const popup = document.querySelector('.popup');
 
 const formFields = {
     name: document.querySelector('.event__name'),
@@ -26,6 +25,8 @@ function showPopupWindow() {
     formFields.name.addEventListener('blur', validateValue);
     formFields.dateStart.addEventListener('blur', validateValue);
     formFields.dateEnd.addEventListener('blur', validateValue);
+    formFields.timeStart.addEventListener('blur', validateValue);
+    formFields.timeEnd.addEventListener('blur', validateValue);
 };
 
 function hendlerClick(event) {
@@ -44,16 +45,12 @@ function validateValue(event) {
 };
 
 function showPopup() {
-    createSelectTime(formFields.timeStart, formFields.timeEnd);
     popupLayer.classList.toggle('display-none');
 
-    idEventPopup.dataset.idEvent = '';
+    popup.dataset.idEvent = '';
     Object.values(formFields).map(field => {
         field.classList.remove('invalid');
-
-        if (!field.classList.contains('select')) {
-            field.value = '';
-        };
+        field.value = '';
 
         if (field.classList.contains('event__color-picker')) {
             field.value = '#4183f1';
@@ -68,7 +65,7 @@ function showEditPopup(event) {
     deleteButton.style.display = 'inline';
 
     const idEvent = event.target.closest('.day-event').dataset.idEvent;
-    idEventPopup.dataset.idEvent = idEvent;
+    popup.dataset.idEvent = idEvent;
     const selectedEvent = getEventById(+idEvent);
 
     formFields.name.value = selectedEvent.name;
