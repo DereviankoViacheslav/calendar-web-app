@@ -12,13 +12,6 @@ const formFields = {
     color: document.querySelector('.event__color-picker'),
 };
 
-// const formFields = [...new FormData(document.querySelector('.popup'))]
-// .reduce((acc, [field, value]) => ({ ...acc, [field]: value }), {});
-// formFields.timeStart = document.querySelector('.event__time-start');
-// formFields.timeEnd = document.querySelector('.event__time-end');
-// console.log(formFields);
-
-
 const btnSave = document.querySelector('.event__btn-save');
 
 function createEvent() {
