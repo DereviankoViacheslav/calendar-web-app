@@ -1,5 +1,6 @@
 function createSelectTime(timeStartElem, timeEndElem) {
-
+    timeStartElem.innerHTML = '';
+    timeEndElem.innerHTML = '';
     let hours = 0;
     let minutes = 0;
 

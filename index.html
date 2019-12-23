@@ -37,23 +37,23 @@
         <form class="popup event" data-id-event="">
             <span class="popup__btn-close"><img class="close"
                     src="https://img.icons8.com/color/48/000000/close-window.png"></span>
-            <input class="event__name" name="eventName" type="text" required placeholder="Add title ">
+            <input class="event__name" name="name" type="text" required placeholder="Add title ">
             <div class="popup__color-picker">
                 <label class="popup__color-picker_label">
                     <span class="popup__color-picker_label-text">Select a color</span>
-                    <input class="event__color-picker" type="color" name="eventColorPicker" value="#4183f1">
+                    <input class="event__color-picker" type="color" name="color" value="#4183f1">
                 </label>
             </div>
             <div class="popup__picker">
                 <img class="clock" src="https://img.icons8.com/pastel-glyph/64/000000/time.png">
-                <input class="event__date-start" name="eventDateStart" required type="date">
-                <select class="event__time-start select" size="1" name="eventTimeStart" required></select>
+                <input class="event__date-start" name="dateStart" required type="date">
+                <select class="event__time-start select" size="1" name="timeStart" required></select>
                 <span class='line'></span>
-                <select class="event__time-end select" name="eventTimeEnd" required></select>
-                <input class="event__date-end" name="eventDateEnd" required type="date">
+                <select class="event__time-end select" name="timeEnd" required></select>
+                <input class="event__date-end" name="dateEnd" required type="date">
             </div>
             <img class="multilineText" src="https://img.icons8.com/windows/32/000000/multiline-text.png">
-            <textarea class="event__description" name="eventDescription" cols="15" rows="5"
+            <textarea class="event__description" name="description" cols="15" rows="5"
                 placeholder="Add description"></textarea>
             <div class="footer-popup">
                 <span class="event__btn-delete"><img class="bascket"
