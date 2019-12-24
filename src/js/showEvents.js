@@ -6,7 +6,6 @@ function showEvents() {
     const listEvents = getEvents();
 
     days.map(day => {
-        console.log('--------============---------');
         const weekDay = new Date(day.dataset.date);
         weekDay.setHours(0, 0, 0, 0);
         const currentDay = new Date();

@@ -36,7 +36,7 @@ function createObjectEvent(event) {
     if (idEvent === '') {
         newEvent = {};
     } else {
-        newEvent = getEventById(idEvent);
+        newEvent = getEventById(+idEvent);
     }
 
     if (newEvent.startDate - new Date() > (15 * 60 * 1000)) {
@@ -60,7 +60,7 @@ function createObjectEvent(event) {
     newEvent.description = document.querySelector('.event__description').value;
     newEvent.color = dataInputs.color;
 
-    if (idEvent !== '') deleteEvent(idEvent);
+    if (idEvent !== '') deleteEvent(+idEvent);
     addEvent(newEvent);
 
     document.querySelector('.popup-layer').classList.toggle('display-none');
