@@ -6,15 +6,13 @@ function getListEventsServer() {
 };
 
 function addEventServer(event) {
-    console.log(event);
     return fetch(baseUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
         },
         body: JSON.stringify(event),
-    })
-    .catch(err => console.log(err));
+    });
 };
 
 function updateEventsServer(idEvent, updatedListEvents) {
