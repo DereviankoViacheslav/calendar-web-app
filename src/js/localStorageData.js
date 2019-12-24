@@ -1,4 +1,4 @@
-function updateStorage(key, value) {
+function updateStorageLocal(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 };
 
@@ -15,7 +15,7 @@ function reviver(key, value) {
 };
 
 function setShowedMonday(showedMonday) {
-    updateStorage('showedMonday', showedMonday);
+    updateStorageLocal('showedMonday', showedMonday);
 };
 
 function getShowedMonday() {
@@ -32,7 +32,7 @@ function getEventsLocal() {
 function addEventLocal(event) {
     const listEvents = getEventsLocal();
     listEvents.push({
-        id: event.id,
+        id: event.id || Date.now(),
         name: event.name,
         createDate: new Date(),
         startDate: event.startDate,
@@ -40,7 +40,7 @@ function addEventLocal(event) {
         description: event.description,
         color: event.color,
     });
-    updateStorage('listEvents', listEvents);
+    updateStorageLocal('listEvents', listEvents);
 };
 
 function getEventByIdLocal(idEvent) {
@@ -58,7 +58,7 @@ function deleteEventLocal(idEvent) {
     });
     listEvents.splice(indexEvent, 1);
 
-    updateStorage('listEvents', listEvents);
+    updateStorageLocal('listEvents', listEvents);
 };
 
-export { getEventsLocal, getEventByIdLocal, addEventLocal, deleteEventLocal, getShowedMonday, setShowedMonday };
+export { getEventsLocal, getEventByIdLocal, addEventLocal, deleteEventLocal, getShowedMonday, setShowedMonday, updateStorageLocal };

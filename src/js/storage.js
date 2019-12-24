@@ -1,18 +1,17 @@
-import { getEventsLocal, getEventByIdLocal, addEventLocal, deleteEventLocal, getShowedMonday, setShowedMonday } from './localStorageData.js';
+import { getEventsLocal, getEventByIdLocal, addEventLocal, deleteEventLocal, getShowedMonday, setShowedMonday, updateStorageLocal } from './localStorageData.js';
 import { getListEventsServer, addEventServer, updateEventsServer, deleteEventServer } from './gateway.js';
 
 function getEvents() {
-    let events = [];
-    getListEventsServer()
-        .then(listEvents => events = listEvents)
-        .catch((err) => events = getEventsLocal());
-    return events;
+    return getEventsLocal();
 };
 
 function addEvent(event) {
     addEventServer(event)
-        .catch(err => console.log(err));
-    addEventLocal(event);
+        .then(event => addEventLocal(event.json()))
+        .catch(err => {
+            addEventLocal(event);
+            console.log(err)
+        });
 };
 
 function getEventById(idEvent) {

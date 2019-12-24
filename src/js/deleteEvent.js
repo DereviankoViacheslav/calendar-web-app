@@ -10,14 +10,14 @@ function deleteObjectEvent() {
 function deleteSelectedEvent(event) {
     const idEvent = event.target.closest('.popup').dataset.idEvent;
 
-    const selectedEvent = getEventById(+idEvent);
+    const selectedEvent = getEventById(idEvent);
 
     if (selectedEvent.startDate - new Date() > (15 * 60 * 1000)) {
         alert('Вы не можете удалить событие раньше чем за 15 мин до начала!!!!');
         return;
     };
 
-    deleteEvent(+idEvent);
+    deleteEvent(idEvent);
     showEvents();
     document.querySelector('.popup-layer').classList.toggle('display-none');
 }

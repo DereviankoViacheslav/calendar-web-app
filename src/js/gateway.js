@@ -1,11 +1,18 @@
-const baseUrl = 'https://crudcrud.com/api/d19131ebc5c0455f9306c82860e73e7d/listEvents';
+const baseUrl = 'https://crudcrud.com/api/d2d1bdf8567f471595933584dce66401/listEvents';
+
+function mapEvents(events) {
+    return events.map(({ _id, ...rest }) => ({ ...rest, id: _id }));
+}
 
 function getListEventsServer() {
     return fetch(baseUrl)
         .then(response => response.json())
+        .then(events => mapEvents(events))
+        .catch(err => console.log(err));
 };
 
 function addEventServer(event) {
+
     return fetch(baseUrl, {
         method: 'POST',
         headers: {
