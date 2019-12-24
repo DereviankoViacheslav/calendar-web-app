@@ -65,7 +65,6 @@ function showEditPopup(event) {
     deleteButton.style.display = 'inline';
 
     const idEvent = event.target.closest('.day-event').dataset.idEvent;
-    
     popup.dataset.idEvent = idEvent;
     const selectedEvent = getEventById(+idEvent);
 

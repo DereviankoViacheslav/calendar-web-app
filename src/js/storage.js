@@ -32,7 +32,7 @@ function getEvents() {
 function addEvent(event) {
     const listEvents = getEvents();
     listEvents.push({
-        id: event.id || Date.now(),
+        id: event.id,
         name: event.name,
         createDate: new Date(),
         startDate: event.startDate,
@@ -40,7 +40,7 @@ function addEvent(event) {
         description: event.description,
         color: event.color,
     });
-    updateStorage('listEvents', listEvents);
+    updateStorage('listEvents', listEvents)
 };
 
 function getEventById(idEvent) {
@@ -58,7 +58,7 @@ function deleteEvent(idEvent) {
     });
     listEvents.splice(indexEvent, 1);
 
-    updateStorage('listEvents', listEvents);
+    updateStorage('listEvents', listEvents)
 };
 
-export { getEvents, getEventById, addEvent, deleteEvent, getShowedMonday, setShowedMonday, updateStorage };
+export { getEvents, getEventById, addEvent, deleteEvent, getShowedMonday, setShowedMonday };

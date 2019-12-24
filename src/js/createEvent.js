@@ -34,7 +34,7 @@ function createObjectEvent(event) {
     let newEvent = null;
 
     if (idEvent === '') {
-        newEvent = {};
+        newEvent = { id: Date.now() };
     } else {
         newEvent = getEventById(+idEvent);
     }
@@ -61,7 +61,7 @@ function createObjectEvent(event) {
     newEvent.color = dataInputs.color;
 
     if (idEvent !== '') deleteEvent(+idEvent);
-    addEvent(newEvent);
+    addEvent(newEvent)
 
     document.querySelector('.popup-layer').classList.toggle('display-none');
     showEvents();

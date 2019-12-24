@@ -17,7 +17,7 @@ function deleteSelectedEvent(event) {
         return;
     };
 
-    deleteEvent(idEvent);
+    deleteEvent(+idEvent);
     showEvents();
     document.querySelector('.popup-layer').classList.toggle('display-none');
 }
