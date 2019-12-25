@@ -1,4 +1,4 @@
-import { addEvent, getEventById, deleteEvent } from './storage.js';
+import { addEvent, updateEvent, getEventById } from './storage.js';
 import { showEvents } from './showEvents.js';
 import { validationIntersectionEvents } from './validationIntersectionEvents.js';
 
@@ -31,13 +31,9 @@ function createObjectEvent(event) {
     const eventStartTime = new Date(dataInputs.dateStart + 'T' + dataInputs.timeStart);
     const eventEndTime = new Date(dataInputs.dateEnd + 'T' + dataInputs.timeEnd);
 
-    let newEvent = null;
+    let newEvent = {};
 
-    if (idEvent === '') {
-        newEvent = { id: Date.now() };
-    } else {
-        newEvent = getEventById(+idEvent);
-    }
+    if (idEvent !== '') newEvent = getEventById(idEvent);
 
     if (newEvent.startDate - new Date() > (15 * 60 * 1000)) {
         alert('Вы не можете редактировать событие раньше чем за 15 мин до начала!!!!');
@@ -60,9 +56,12 @@ function createObjectEvent(event) {
     newEvent.description = document.querySelector('.event__description').value;
     newEvent.color = dataInputs.color;
 
-    if (idEvent !== '') deleteEvent(+idEvent);
-    addEvent(newEvent)
-
+    if (idEvent !== '') {
+        updateEvent(idEvent, newEvent);
+    } else {
+        addEvent(newEvent)
+    }
+    
     document.querySelector('.popup-layer').classList.toggle('display-none');
     showEvents();
 };
