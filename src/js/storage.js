@@ -1,64 +1,79 @@
-function updateStorage(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
+import { getEventsLocal, deleteEventLocal, getEventById, updateStorage, getShowedMonday, setShowedMonday } from './localStorageData.js';
+import { showEvents } from './showEvents.js';
+
+const baseUrl = 'https://crudcrud.com/api/b85d84e93dbc410386a490343636efbc/listEvents';
+
+function mapEvents(tasks) {
+    return tasks.map(({ _id, ...rest }) => ({ ...rest, id: _id }));
 };
 
-function getItemStorage(key) {
-    return JSON.parse(localStorage.getItem(key), reviver);
-};
-
-function reviver(key, value) {
-    if (['createDate', 'startDate', 'endDate'].includes(key)) {
-        return new Date(value);
-    }
-
-    return value;
-};
-
-function setShowedMonday(showedMonday) {
-    updateStorage('showedMonday', showedMonday);
-};
-
-function getShowedMonday() {
-    if (getItemStorage('showedMonday')) {
-        return new Date(getItemStorage('showedMonday'));
-    }
-    return getItemStorage('showedMonday');
-};
-
-function getEvents() {
-    return getItemStorage('listEvents') || [];
+function getEventsList() {
+    return fetch(baseUrl)
+        .then(response => response.json())
+        .then(tasks => mapEvents(tasks));
 };
 
 function addEvent(event) {
-    const listEvents = getEvents();
-    listEvents.push({
-        id: event.id,
-        name: event.name,
-        createDate: new Date(),
-        startDate: event.startDate,
-        endDate: event.endDate,
-        description: event.description,
-        color: event.color,
-    });
-    updateStorage('listEvents', listEvents)
+
+    return fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(event),
+    })
+        .then(response => response.json())
+        .then(resEvent => {
+            const listEvents = getEventsLocal();
+            listEvents.push({
+                ...event,
+                id: resEvent._id,
+                createDate: new Date(),
+            });
+            updateStorage('listEvents', listEvents);
+            showEvents();
+        })
+        .catch(err => {
+            console.log(err);
+            const listEvents = getEventsLocal();
+            listEvents.push({
+                ...event,
+                id: Date.now().toString(),
+                createDate: new Date(),
+            });
+            updateStorage('listEvents', listEvents);
+            showEvents();
+        })
 };
 
-function getEventById(idEvent) {
-    return getEvents().find(({ id }) => id === idEvent);
+function updateEvent(eventId, updatedEvenytData) {
+
+    deleteEventLocal(eventId);
+    const listEvents = getEventsLocal();
+    listEvents.push({
+        ...updatedEvenytData,
+        createDate: new Date(),
+    });
+    updateStorage('listEvents', listEvents);
+
+    return fetch(`${baseUrl}/${eventId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(updatedEvenytData),
+    })
+        .catch(err => console.log(err));
 };
 
 function deleteEvent(idEvent) {
-    const listEvents = getEvents();
-    let indexEvent = undefined;
-    listEvents.find(({ id }, index) => {
-        if (id === idEvent) {
-            indexEvent = index;
-            return true;
-        }
-    });
-    listEvents.splice(indexEvent, 1);
 
-    updateStorage('listEvents', listEvents)
+    deleteEventLocal(idEvent);
+
+    return fetch(`${baseUrl}/${idEvent}`, {
+        method: 'DELETE',
+    })
+        .catch(err => console.log(err));
 };
 
-export { getEvents, getEventById, addEvent, deleteEvent, getShowedMonday, setShowedMonday };
+export { getEventsLocal, getEventById, updateEvent, addEvent, deleteEvent, getShowedMonday, setShowedMonday, updateStorage, getEventsList };

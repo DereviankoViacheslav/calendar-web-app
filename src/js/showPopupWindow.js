@@ -66,7 +66,7 @@ function showEditPopup(event) {
 
     const idEvent = event.target.closest('.day-event').dataset.idEvent;
     popup.dataset.idEvent = idEvent;
-    const selectedEvent = getEventById(+idEvent);
+    const selectedEvent = getEventById(idEvent);
 
     formFields.name.value = selectedEvent.name;
     formFields.description.value = selectedEvent.description;

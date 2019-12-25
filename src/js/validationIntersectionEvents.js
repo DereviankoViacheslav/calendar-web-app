@@ -1,9 +1,9 @@
-import { getEvents } from './storage.js';
+import { getEventsLocal } from './storage.js';
 
 function validationIntersectionEvents(eventStart, eventEnd, idEvent) {
 
-    const existingEvent = getEvents().find(event => {
-        if (idEvent !== '' && event.id === +idEvent) return false;
+    const existingEvent = getEventsLocal().find(event => {
+        if (idEvent !== '' && event.id === idEvent) return false;
         if (eventEnd <= event.startDate || eventStart >= event.endDate) return false;
         return true;
     });

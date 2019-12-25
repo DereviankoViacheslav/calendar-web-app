@@ -1,10 +1,9 @@
-import { getEvents } from './storage.js';
+import { getEventsLocal } from './storage.js';
 import { showEditPopup } from './showPopupWindow.js';
 
 function showEvents() {
     const days = [...document.querySelectorAll('.column-day')];
-    const listEvents = getEvents();
-
+    const listEvents = getEventsLocal();
     days.map(day => {
         const weekDay = new Date(day.dataset.date);
         weekDay.setHours(0, 0, 0, 0);

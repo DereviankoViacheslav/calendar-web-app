@@ -32,10 +32,10 @@ function showWeek() {
         let isToday = markedDay.setHours(0, 0, 0, 0) === currentDate.setHours(0, 0, 0, 0);
         headerWeekHTML +=
             `<div class="day">
-            <span class="day_nameDay">${arrNamesWeekdays[i]}</span>
-            <div class="day_numberDay ${isToday ? 'today' : ''}">${valueDateForAttribute}</div>
-            <div class="LittleBorder"></div>
-        </div>`;
+                <span class="day_nameDay">${arrNamesWeekdays[i]}</span>
+                <div class="day_numberDay ${isToday ? 'today' : ''}">${valueDateForAttribute}</div>
+                <div class="LittleBorder"></div>
+            </div>`;
         day.classList.add('column-day');
         const date = `${weekday.getFullYear()}-${weekday.getMonth() + 1}-${valueDateForAttribute}`;
         day.setAttribute('data-date', date);
