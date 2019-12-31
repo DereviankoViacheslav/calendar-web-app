@@ -1,0 +1,32 @@
+{
+  "name": "calendar-web-app",
+  "version": "1.0.0",
+  "description": "### QUICK START <ol>   <li>Clone the repository</li>   <li>Open the file <b>index.html</b> in the browser</li>   <li>For much better open with live server</li> </ol>",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build:styles": "sass ./src/sass/index.scss ./dist/main.css",
+    "copy:html": "cp ./src/index.html ./dist/index.html",
+    "copy:scripts": "cp -R ./src/js ./dist/js",
+    "clean": "rm -rf ./dist",
+    "build": "npm-run-all clean build:styles copy:html copy:scripts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DereviankoViacheslav/calendar-web-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.7.7",
+    "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.24.0"
+  },
+  "bugs": {
+    "url": "https://github.com/DereviankoViacheslav/calendar-web-app/issues"
+  },
+  "homepage": "https://github.com/DereviankoViacheslav/calendar-web-app#readme"
+}
