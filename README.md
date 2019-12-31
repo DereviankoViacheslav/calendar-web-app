@@ -1,4 +1,4 @@
-# [Calendar](https://dereviankoviacheslav.github.io/calendar-web-app/)
+# [Calendar](https://dereviankoviacheslav.github.io/calendar-web-app/dist/index.html)
 
 ### QUICK START
 <ol>
