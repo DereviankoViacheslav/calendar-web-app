@@ -10,8 +10,9 @@
     "copy:html": "cp ./src/index.html ./dist/index.html",
     "transpile:scripts": "babel ./src/js --out-dir=./temp/scripts",
     "build:scripts": "webpack ./temp/scripts/index.js -p",
-    "clean": "rm -rf ./temp ./dist",
-    "build": "npm-run-all clean transpile:scripts build:* copy:*"
+    "clean": "rm -rf ./dist",
+    "clean:temp": "rm -rf ./temp",
+    "build": "npm-run-all clean transpile:scripts build:* copy:* clean:temp"
   },
   "repository": {
     "type": "git",
