@@ -3,7 +3,7 @@
 ### QUICK START
 <ol>
   <li>Clone the repository</li>
-  <li>Open the file <b>index.html</b> in the browser</li>
+  <li>Open the file <b>dist/index.html</b> in the browser</li>
   <li>For much better open with live server</li>
 </ol>
 
