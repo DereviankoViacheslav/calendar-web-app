@@ -1,18 +1,16 @@
 {
   "name": "calendar-web-app",
   "version": "1.0.0",
-  "description": "### QUICK START <ol>   <li>Clone the repository</li>   <li>Open the file <b>index.html</b> in the browser</li>   <li>For much better open with live server</li> </ol>",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "build:styles": "sass ./src/sass/index.scss ./dist/style.css",
     "copy:html": "cp ./src/index.html ./dist/index.html",
-    "transpile:scripts": "babel ./src/js --out-dir=./temp/scripts",
-    "build:scripts": "webpack ./temp/scripts/index.js -p",
+    "build:scripts": "webpack -p",
     "clean": "rm -rf ./dist",
-    "clean:temp": "rm -rf ./temp",
-    "build": "npm-run-all clean transpile:scripts build:* copy:* clean:temp"
+    "build": "npm-run-all clean build:* copy:*",
+    "watch": "webpack -d --devtools eval-source-map -w"
   },
   "repository": {
     "type": "git",
@@ -27,7 +25,13 @@
     "@babel/preset-env": "^7.7.7",
     "jest": "^24.9.0",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.24.0",
+    "css-loader": "^3.4.1",
+    "file-loader": "^5.0.2",
+    "sass": "^1.24.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.1.2",
+    "url-loader": "^3.0.0",
+    "babel-loader": "^8.0.6",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
