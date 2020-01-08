@@ -1,7 +1,7 @@
 import { getEventsLocal, deleteEventLocal, getEventById, updateStorage, getShowedMonday, setShowedMonday } from './localStorageData.js';
 import { showEvents } from './showEvents.js';
 
-const baseUrl = 'https://crudcrud.com/api/ff3c84df759b43b1be299316b0025991/listEvents';
+const baseUrl = 'https://crudcrud.com/api/952ede5c12be421f8361372d369b75ac/listEvents';
 
 function mapEvents(tasks) {
     return tasks.map(({ _id, ...rest }) => ({ ...rest, id: _id }));
