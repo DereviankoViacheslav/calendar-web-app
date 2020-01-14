@@ -12,8 +12,8 @@ function deleteSelectedEvent(event) {
 
   const selectedEvent = getEventById(idEvent);
 
-  if (selectedEvent.startDate - new Date() > (15 * 60 * 1000)) {
-    alert('Вы не можете удалить событие раньше чем за 15 мин до начала!!!!');
+  if (selectedEvent.startDate - new Date() < (15 * 60 * 1000) && selectedEvent.endDate > new Date()) {
+    alert('Вы не можете удалить событие менее чем за 15 мин до начала и до его окончания!!!!');
     return;
   }
 

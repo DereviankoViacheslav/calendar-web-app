@@ -1,6 +1,7 @@
 import { addEvent, updateEvent, getEventById } from './storage';
 import { showEvents } from './showEvents';
-import { validationIntersectionEvents } from './validationIntersectionEvents';
+import { formFieldsValidator } from './formFieldsValidator';
+import { eventValidator } from './eventValidator';
 
 const btnSave = document.querySelector('.event__btn-save');
 
@@ -12,16 +13,7 @@ function createObjectEvent(event) {
   event.preventDefault();
   const arrInputs = [...document.querySelectorAll('.popup input')];
 
-  const invalidFields = arrInputs.filter((elem) => {
-    if (!elem.classList.contains('event__color-picker')
-            && !elem.value) {
-      elem.classList.add('invalid');
-      return elem;
-    }
-    return false;
-  });
-
-  if (invalidFields.length > 0) return;
+  if (formFieldsValidator(arrInputs)) return;
 
   const popup = document.querySelector('.popup');
   const { idEvent } = popup.dataset;
@@ -36,20 +28,7 @@ function createObjectEvent(event) {
 
   if (idEvent !== '') newEvent = getEventById(idEvent);
 
-  if (newEvent.startDate - new Date() > (15 * 60 * 1000)) {
-    alert('Вы не можете редактировать событие раньше чем за 15 мин до начала!!!!');
-    return;
-  }
-
-  if (eventEndTime - eventStartTime > (6 * 60 * 60 * 1000)) {
-    alert('Событие не может длиться дольше 6-ти часов!!!!');
-    return;
-  }
-
-  if (validationIntersectionEvents(eventStartTime, eventEndTime, idEvent)) {
-    alert('У Вас уже запланировано событие на это время!!!!');
-    return;
-  }
+  if (eventValidator(eventStartTime, eventEndTime, idEvent, newEvent.startDate)) return;
 
   newEvent.name = dataInputs.name;
   newEvent.startDate = eventStartTime;

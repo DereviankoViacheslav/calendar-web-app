@@ -3,7 +3,7 @@ import {
 } from './localStorageData';
 import { showEvents } from './showEvents';
 
-const baseUrl = 'https://crudcrud.com/api/1dd7e6a5addd4e2d9f4b7ba4186e96ab/listEvents';
+const baseUrl = 'https://crudcrud.com/api/3a14f94a59fa4a4a8e1da684c4b7806d/listEvents';
 
 function mapEvents(tasks) {
   return tasks.map(({ _id, ...rest }) => ({ ...rest, id: _id }));
@@ -25,26 +25,24 @@ function addEvent(event) {
   })
     .then((response) => response.json())
     .then((resEvent) => {
-      const listEvents = getEventsLocal();
-      listEvents.push({
-        ...event,
-        id: resEvent._id,
-        createDate: new Date(),
-      });
-      updateStorage('listEvents', listEvents);
+      addEventToLocalStorage(event, resEvent._id);
       showEvents();
     })
     .catch((err) => {
       console.log(err);
-      const listEvents = getEventsLocal();
-      listEvents.push({
-        ...event,
-        id: Date.now().toString(),
-        createDate: new Date(),
-      });
-      updateStorage('listEvents', listEvents);
+      addEventToLocalStorage(event);
       showEvents();
     });
+}
+
+function addEventToLocalStorage(event, idEvent) {
+  const listEvents = getEventsLocal();
+  listEvents.push({
+    ...event,
+    id: idEvent || Date.now().toString(),
+    createDate: new Date(),
+  });
+  updateStorage('listEvents', listEvents);
 }
 
 function updateEvent(eventId, updatedEvenytData) {
