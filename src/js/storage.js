@@ -3,7 +3,7 @@ import {
 } from './localStorageData';
 import { showEvents } from './showEvents';
 
-const baseUrl = 'https://crudcrud.com/api/78a4633615894bbf8650ebe297d65c93/listEvents';
+const baseUrl = 'https://crudcrud.com/api/7f3394d21c1741b2b2fe7af0c76d2e18/listEvents';
 
 function mapEvents(tasks) {
   return tasks.map(({ _id, ...rest }) => ({ ...rest, id: _id }));
