@@ -1,8 +1,8 @@
 import { getEventsLocal } from './storage';
 
-function eventValidator(eventStart, eventEnd, idEvent, startTimeEvent) {
+function eventValidator(eventStart, eventEnd, idEvent) {
 
-  if (startTimeEvent - new Date() < (15 * 60 * 1000) && eventEnd > new Date()) {
+  if (eventStart - new Date() < (15 * 60 * 1000) && eventEnd > new Date()) {
     alert('Вы не можете изменить/отменить событие за 15 мин до начала!!!!');
     return true;
   }

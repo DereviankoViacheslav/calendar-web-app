@@ -28,7 +28,7 @@ function createObjectEvent(event) {
 
   if (idEvent !== '') newEvent = getEventById(idEvent);
 
-  if (eventValidator(eventStartTime, eventEndTime, idEvent, newEvent.startDate)) return;
+  if (eventValidator(eventStartTime, eventEndTime, idEvent)) return;
 
   newEvent.name = dataInputs.name;
   newEvent.startDate = eventStartTime;

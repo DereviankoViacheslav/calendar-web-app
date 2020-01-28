@@ -3,16 +3,11 @@ import {
 } from './localStorageData';
 import { showEvents } from './showEvents';
 
-const baseUrl = 'https://crudcrud.com/api/7f3394d21c1741b2b2fe7af0c76d2e18/listEvents';
-
-function mapEvents(tasks) {
-  return tasks.map(({ _id, ...rest }) => ({ ...rest, id: _id }));
-}
+const baseUrl = 'https://5e300c25576f9d0014d63ac2.mockapi.io/api/v1/listEvents';
 
 function getEventsList() {
   return fetch(baseUrl)
     .then((response) => response.json())
-    .then((tasks) => mapEvents(tasks));
 }
 
 function addEvent(event) {
@@ -45,11 +40,11 @@ function addEventToLocalStorage(event, idEvent) {
   updateStorage('listEvents', listEvents);
 }
 
-function updateEvent(eventId, updatedEvenytData) {
+function updateEvent(eventId, updatedEventData) {
   deleteEventLocal(eventId);
   const listEvents = getEventsLocal();
   listEvents.push({
-    ...updatedEvenytData,
+    ...updatedEventData,
     createDate: new Date(),
   });
   updateStorage('listEvents', listEvents);
@@ -59,7 +54,7 @@ function updateEvent(eventId, updatedEvenytData) {
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
-    body: JSON.stringify(updatedEvenytData),
+    body: JSON.stringify(updatedEventData),
   })
     .catch((err) => console.log(err));
 }
